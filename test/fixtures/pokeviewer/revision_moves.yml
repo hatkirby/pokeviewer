@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  revision: one
+  move: one
+  number: 1
+  pp_bonuses: 1
+
+two:
+  revision: two
+  move: two
+  number: 1
+  pp_bonuses: 1

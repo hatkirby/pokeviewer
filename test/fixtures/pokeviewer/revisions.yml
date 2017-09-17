@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pokemon: one
+  nickname: MyString
+  experience: 1
+  level: 1
+  hp: 1
+  attack: 1
+  defense: 1
+  special_attack: 1
+  special_defense: 1
+  speed: 1
+  coolness: 1
+  beauty: 1
+  cuteness: 1
+  smartness: 1
+  toughness: 1
+  sheen: 1
+  move1: one
+  move2: one
+  move3: one
+  move4: one
+  move1_pp: 1
+  move2_pp: 1
+  move3_pp: 1
+  move4_pp: 1
+  hold_item: 1
+
+two:
+  pokemon: two
+  nickname: MyString
+  experience: 1
+  level: 1
+  hp: 1
+  attack: 1
+  defense: 1
+  special_attack: 1
+  special_defense: 1
+  speed: 1
+  coolness: 1
+  beauty: 1
+  cuteness: 1
+  smartness: 1
+  toughness: 1
+  sheen: 1
+  move1: two
+  move2: two
+  move3: two
+  move4: two
+  move1_pp: 1
+  move2_pp: 1
+  move3_pp: 1
+  move4_pp: 1
+  hold_item: 1

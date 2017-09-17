@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species: one
+  trainer: one
+  key: MyString
+  ot_name: MyString
+  ot_number: 1
+  met_type: MyString
+  met_location: MyString
+  met_level: 1
+  shiny: false
+  nature: MyString
+  gender: MyString
+  second_ability: false
+  unown_letter: 
+
+two:
+  species: two
+  trainer: two
+  key: MyString
+  ot_name: MyString
+  ot_number: 1
+  met_type: MyString
+  met_location: MyString
+  met_level: 1
+  shiny: false
+  nature: MyString
+  gender: MyString
+  second_ability: false
+  unown_letter: 
