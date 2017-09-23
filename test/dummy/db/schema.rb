@@ -43,18 +43,6 @@ ActiveRecord::Schema.define(version: 20170917011258) do
     t.index ["uuid"], name: "index_pokeviewer_pokemon_on_uuid", unique: true
   end
 
-  create_table "pokeviewer_revision_moves", force: :cascade do |t|
-    t.integer "revision_id", null: false
-    t.integer "move_id", null: false
-    t.integer "number", null: false
-    t.integer "pp_bonuses", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["move_id"], name: "index_pokeviewer_revision_moves_on_move_id"
-    t.index ["revision_id", "number"], name: "index_pokeviewer_revision_moves_on_revision_id_and_number", unique: true
-    t.index ["revision_id"], name: "index_pokeviewer_revision_moves_on_revision_id"
-  end
-
   create_table "pokeviewer_revisions", force: :cascade do |t|
     t.integer "pokemon_id", null: false
     t.integer "sequential_id", null: false
@@ -74,8 +62,20 @@ ActiveRecord::Schema.define(version: 20170917011258) do
     t.integer "toughness", null: false
     t.integer "sheen", null: false
     t.integer "hold_item"
+    t.integer "move_1_id", null: false
+    t.integer "move_2_id"
+    t.integer "move_3_id"
+    t.integer "move_4_id"
+    t.integer "move_1_pp_bonuses", default: 0, null: false
+    t.integer "move_2_pp_bonuses", default: 0, null: false
+    t.integer "move_3_pp_bonuses", default: 0, null: false
+    t.integer "move_4_pp_bonuses", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["move_1_id"], name: "index_pokeviewer_revisions_on_move_1_id"
+    t.index ["move_2_id"], name: "index_pokeviewer_revisions_on_move_2_id"
+    t.index ["move_3_id"], name: "index_pokeviewer_revisions_on_move_3_id"
+    t.index ["move_4_id"], name: "index_pokeviewer_revisions_on_move_4_id"
     t.index ["pokemon_id", "sequential_id"], name: "index_pokeviewer_revisions_on_pokemon_id_and_sequential_id", unique: true
     t.index ["pokemon_id"], name: "index_pokeviewer_revisions_on_pokemon_id"
   end

@@ -3,10 +3,6 @@ module Pokeviewer
     belongs_to :pokemon
     acts_as_sequenced scope: :pokemon_id
 
-    has_many :revision_moves, -> { order "number ASC" }
-    has_many :moves, through: :revision_moves
-
-    validates :moves, presence: true
     validates :nickname, presence: true
 
     validates :experience, presence: true,
@@ -68,5 +64,34 @@ module Pokeviewer
         greater_than_or_equal_to: 0,
         less_than_or_equal_to: 10,
         only_integer: true }
+
+    belongs_to :move_1, class_name: "Move"
+    belongs_to :move_2, class_name: "Move", optional: true
+    belongs_to :move_3, class_name: "Move", optional: true
+    belongs_to :move_4, class_name: "Move", optional: true
+
+    validates :move_1_pp_bonuses, presence: true,
+      numericality: {
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 3,
+        only_integer: true}
+
+    validates :move_2_pp_bonuses, presence: true,
+      numericality: {
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 3,
+        only_integer: true}
+
+    validates :move_3_pp_bonuses, presence: true,
+      numericality: {
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 3,
+        only_integer: true}
+
+    validates :move_4_pp_bonuses, presence: true,
+      numericality: {
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 3,
+        only_integer: true}
   end
 end
