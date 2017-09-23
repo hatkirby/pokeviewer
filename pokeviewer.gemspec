@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.1.4"
   s.add_dependency "enumerize"
-  s.add_dependency "sequential"
+  s.add_dependency "sequenced"
+  s.add_dependency "activerecord-diff"
 
   s.add_development_dependency "sqlite3"
 end

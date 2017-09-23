@@ -4,7 +4,7 @@ module Pokeviewer
 
     belongs_to :species
     belongs_to :trainer, optional: true
-    has_many :revisions, dependent: :destroy
+    has_many :revisions, -> { order "sequential_id ASC" }, dependent: :destroy
 
     validate :uuid_is_constant, on: :update
     before_create :set_uuid

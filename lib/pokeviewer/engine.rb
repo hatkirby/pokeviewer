@@ -1,5 +1,5 @@
 require "enumerize"
-require "sequential"
+require "sequenced"
 
 module Pokeviewer
   class Engine < ::Rails::Engine
