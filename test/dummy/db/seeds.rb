@@ -1,0 +1,1 @@
+Pokeviewer::Engine.load_seed
