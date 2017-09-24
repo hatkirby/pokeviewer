@@ -27,8 +27,14 @@ module Pokeviewer
           r.species_id = param["species"]
           r.ot_name = param["otName"]
           r.ot_number = param["otId"]
-          r.met_type = :normal
-          r.met_level = param["metLevel"]
+
+          if param["metLevel"] == 0
+            r.met_type = :hatched
+          else
+            r.met_type = :normal
+            r.met_level = param["metLevel"]
+          end
+
           r.shiny = param["shiny"]
           r.nature = Pokemon.nature.values[param["nature"]]
           r.gender = param["gender"]

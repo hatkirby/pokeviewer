@@ -1,0 +1,35 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.pokemon {
+  font-family: 'Power Green';
+  display: flex;
+  margin: 1em;
+
+  .male {
+    color: blue;
+  }
+
+  .female {
+    color: red;
+  }
+  
+  .pokemon-name {
+    font-weight: bold;
+  }
+
+  .pokemon-ivs {
+    margin: 0 1em;
+    
+    th {
+      text-align: center;
+      padding-right: .5em;
+    }
+    
+    td {
+      text-align: right;
+    }
+  }
+}

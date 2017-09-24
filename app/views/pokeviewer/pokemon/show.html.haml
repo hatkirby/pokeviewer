@@ -1,0 +1,30 @@
+.pokemon
+  .pokemon-basics
+    .pokemon-species-id= "No. #{@pokemon.species_id}"
+    .pokemon-species-name= @pokemon.species.name
+    .pokemon-image= image_tag @pokemon.sprite_path
+    .pokemon-name= @pokemon.revisions.last.nickname
+    .pokemon-ot
+      OT/
+      %span{ class: @pokemon.gender }>= @pokemon.ot_name
+    .pokemon-id= "ID/#{@pokemon.ot_number}"
+    .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
+  %table.pokemon-ivs
+    %tr
+      %th HP
+      %td= @pokemon.revisions.last.hp
+    %tr
+      %th Attack
+      %td= @pokemon.revisions.last.attack
+    %tr
+      %th Defense
+      %td= @pokemon.revisions.last.defense
+    %tr
+      %th Sp. Atk
+      %td= @pokemon.revisions.last.special_attack
+    %tr
+      %th Sp. Def
+      %td= @pokemon.revisions.last.special_defense
+    %tr
+      %th Speed
+      %td= @pokemon.revisions.last.speed

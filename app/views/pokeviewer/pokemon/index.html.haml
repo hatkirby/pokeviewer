@@ -1,0 +1,5 @@
+%ul
+  - @pokemon.each do |p|
+    %li
+      = link_to p.revisions.last.nickname, p
+      = image_tag p.icon_path

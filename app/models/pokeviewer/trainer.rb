@@ -12,6 +12,7 @@ module Pokeviewer
       message: "and number should be pairwise unique" }
 
     validates :game, presence: true
-    enumerize :game, in: [:ruby, :sapphire, :firered, :leafgreen, :emerald]
+    enumerize :game, in: [:ruby, :sapphire, :firered, :leafgreen, :emerald],
+      predicates: true
   end
 end

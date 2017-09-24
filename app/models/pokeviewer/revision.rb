@@ -4,7 +4,7 @@ module Pokeviewer
   class Revision < ApplicationRecord
     include ActiveRecord::Diff
 
-    diff :nickname, :experience, :level, :hp, :attack, :defense,
+    diff :nickname, :level, :hp, :attack, :defense,
       :special_attack, :special_defense, :speed, :coolness, :beauty, :cuteness,
       :smartness, :toughness, :sheen, :hold_item, :move_1_id, :move_2_id,
       :move_3_id, :move_4_id, :move_1_pp_bonuses, :move_2_pp_bonuses,

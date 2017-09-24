@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917011258) do
+ActiveRecord::Schema.define(version: 20170924035127) do
 
   create_table "pokeviewer_moves", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170917011258) do
     t.integer "ot_number", null: false
     t.string "met_type", null: false
     t.string "met_location"
-    t.integer "met_level", null: false
+    t.integer "met_level"
     t.boolean "shiny", default: false, null: false
     t.string "nature", null: false
     t.string "gender", null: false

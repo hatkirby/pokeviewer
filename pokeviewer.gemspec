@@ -20,6 +20,9 @@ Gem::Specification.new do |s|
   s.add_dependency "enumerize"
   s.add_dependency "sequenced"
   s.add_dependency "activerecord-diff"
+  s.add_dependency "haml"
+  s.add_dependency 'sass-rails', '~> 5.0'
+  s.add_dependency 'normalize-rails'
 
   s.add_development_dependency "sqlite3"
 end
