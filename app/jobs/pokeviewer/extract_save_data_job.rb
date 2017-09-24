@@ -22,7 +22,9 @@ module Pokeviewer
           end
         end
 
-      pokemons = args["pokemon"].map do |param|
+      game.pokemon.clear
+
+      args["pokemon"].each do |param|
         pk = Pokemon.find_or_create_by!(key: param["key"]) do |r|
           r.species_id = param["species"]
           r.ot_name = param["otName"]
@@ -46,6 +48,18 @@ module Pokeviewer
             r.unown_letter = Pokemon.unown_letter.values[param["unownLetter"]]
           end
         end
+
+        pk.trainer = game
+
+        if param["storage"] == "party"
+          pk.box = nil
+        elsif param["storage"] == "box"
+          pk.box = param["box"]
+        end
+
+        pk.slot = param["slot"]
+
+        pk.save!
 
         rev = Revision.new(pokemon: pk)
         rev.nickname = param["nickname"]
@@ -85,11 +99,7 @@ module Pokeviewer
         if pk.revisions.empty? or rev.diff?(pk.revisions.last)
           rev.save!
         end
-
-        pk
       end
-
-      game.pokemon = pokemons
     end
   end
 end

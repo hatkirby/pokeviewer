@@ -36,6 +36,10 @@ module Pokeviewer
     enumerize :unown_letter, in: [:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k,
       :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z,
       :question, :exclamation]
+      
+    validates :slot, presence: true,
+      uniqueness: { scope: [:trainer_id, :box] },
+      unless: Proc.new { |a| a.trainer.nil? }
 
     def to_param
       uuid
