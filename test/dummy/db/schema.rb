@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924160524) do
+ActiveRecord::Schema.define(version: 20170924224550) do
+
+  create_table "pokeviewer_boxes", force: :cascade do |t|
+    t.integer "trainer_id", null: false
+    t.integer "number", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trainer_id", "number"], name: "index_pokeviewer_boxes_on_trainer_id_and_number", unique: true
+    t.index ["trainer_id"], name: "index_pokeviewer_boxes_on_trainer_id"
+  end
 
   create_table "pokeviewer_moves", force: :cascade do |t|
     t.string "name", limit: 191, null: false

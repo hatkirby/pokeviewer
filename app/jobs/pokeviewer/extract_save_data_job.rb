@@ -22,6 +22,12 @@ module Pokeviewer
           end
         end
 
+      args["boxes"].each_with_index do |box_name,index|
+        box = Box.find_or_initialize_by(trainer: game, number: index)
+        box.name = box_name
+        box.save!
+      end
+
       game.pokemon.clear
 
       args["pokemon"].each do |param|

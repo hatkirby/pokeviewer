@@ -3,6 +3,7 @@ module Pokeviewer
     extend Enumerize
 
     has_many :pokemon, dependent: :nullify
+    has_many :boxes, -> { order("number ASC") }, dependent: :destroy
 
     validates :number, presence: true,
       numericality: { greater_than_or_equal_to: 0, only_integer: true }
@@ -21,25 +22,6 @@ module Pokeviewer
 
     def party
       pokemon.where(box: nil).order("slot ASC")
-    end
-
-    def boxes
-      (0..13).map { |i| box(i) }
-    end
-
-    def box(number)
-      pokes = pokemon.where(box: number).order("slot ASC").to_a
-
-      result = []
-      (0..29).each do |i|
-        if pokes.empty? or (pokes.first.slot == i)
-          result << pokes.shift
-        else
-          result << nil
-        end
-      end
-
-      result
     end
   end
 end
