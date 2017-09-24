@@ -1,5 +1,27 @@
-%ul
-  - @pokemon.each do |p|
-    %li
-      = link_to p.revisions.last.nickname, p
-      = image_tag p.icon_path
+- @trainers.each do |trainer|
+  .trainer
+    .trainer-info{ class: trainer.game }
+      %h2= trainer.name
+      %span.tid= trainer.display_number
+    .pc-boxes
+      %ul.party.pc-box
+        %h3 Party
+        - trainer.party.each do |p|
+          %li
+            %span.party-icon= image_tag p.icon_path
+            %span.party-name= link_to p.revisions.last.nickname, p
+      - trainer.boxes.each_with_index do |box,bid|
+        .pc-box
+          %h3= "Box #{bid+1}"
+          %table.pc-contents
+            - box.each_slice(6) do |row|
+              %tr
+                - row.each do |p|
+                  %td.pc-pokemon
+                    - unless p.nil?
+                      = link_to image_tag(p.icon_path), p
+                      .pc-data
+                        .pc-data-name= p.revisions.last.nickname
+                        .pc-data-ot
+                          OT/
+                          %span{ class: p.ot_gender }>= p.ot_name

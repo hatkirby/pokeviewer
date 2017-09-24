@@ -14,5 +14,32 @@ module Pokeviewer
     validates :game, presence: true
     enumerize :game, in: [:ruby, :sapphire, :firered, :leafgreen, :emerald],
       predicates: true
+
+    def display_number
+      number.to_s.rjust(5, '0')
+    end
+
+    def party
+      pokemon.where(box: nil).order("slot ASC")
+    end
+
+    def boxes
+      (0..13).map { |i| box(i) }
+    end
+
+    def box(number)
+      pokes = pokemon.where(box: number).order("slot ASC").to_a
+
+      result = []
+      (0..29).each do |i|
+        if pokes.empty? or (pokes.first.slot == i)
+          result << pokes.shift
+        else
+          result << nil
+        end
+      end
+
+      result
+    end
   end
 end

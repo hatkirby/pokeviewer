@@ -3,6 +3,7 @@ require "sequenced"
 require "haml"
 require "sass-rails"
 require "normalize-rails"
+require "jquery-rails"
 
 module Pokeviewer
   class Engine < ::Rails::Engine
@@ -17,7 +18,8 @@ module Pokeviewer
         %w(pokeviewer/icons/*.png
           pokeviewer/sprites/**/*.png
           pokeviewer/sprites/**/*.gif
-          pokeviewer/types/**.gif)
+          pokeviewer/types/**.gif
+          pokeviewer/boxes/**.png)
     end
   end
 end

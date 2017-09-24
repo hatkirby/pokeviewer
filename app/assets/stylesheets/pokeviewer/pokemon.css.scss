@@ -3,6 +3,132 @@
   They will automatically be included in application.css.
 */
 
+.trainer {
+  margin: 1em;
+  font-family: 'Power Green';
+  width: 758px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  border: 1px solid #999;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+
+  .trainer-info {
+    padding: .5em .75em .25em .75em;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid #888;
+
+    &.ruby {
+      background-color: #D67873;
+    }
+
+    &.sapphire {
+      background-color: #445E9C;
+    }
+
+    &.firered {
+      background-color: #F5AC78;
+    }
+
+    &.leafgreen {
+      background-color: #A7DB8D;
+    }
+
+    &.emerald {
+      background-color: #4E8234;
+    }
+
+    h2 {
+      margin: 0;
+      display: inline-block;
+      font-size: 24px;
+    }
+
+    .tid {
+      display: inline-block;
+      font-size: 13px;
+    }
+  }
+
+  .pc-boxes {
+    display: flex;
+    flex-wrap: wrap;
+
+    .party {
+      margin: 0;
+
+      li {
+        display: block;
+        margin: -5px 0;
+
+        .party-icon {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        .party-name {
+          vertical-align: sub;
+          display: inline-block;
+          margin-left: .25em;
+        }
+
+        a {
+          color: black;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .pc-box {
+      margin: .5em;
+      padding: .5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 236px;
+      box-sizing: border-box;
+
+      h3 {
+        margin: 0;
+        text-align: center;
+      }
+
+      .pc-contents {
+        margin: 0;
+
+        .pc-pokemon {
+          .pc-data {
+            display: none;
+            background-color: #111;
+            color: #fff;
+            z-index: 1;
+            padding: .5em;
+            box-shadow: 0px 0px 2px 1px #B3B3B3;
+            border-radius: 4px;
+            position: absolute;
+
+            .pc-data-name {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .pokemon {
   font-family: 'Power Green';
   display: flex;
@@ -15,19 +141,19 @@
   .female {
     color: red;
   }
-  
+
   .pokemon-name {
     font-weight: bold;
   }
 
   .pokemon-ivs {
     margin: 0 1em;
-    
+
     th {
       text-align: center;
       padding-right: .5em;
     }
-    
+
     td {
       text-align: right;
     }

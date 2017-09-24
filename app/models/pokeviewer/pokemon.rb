@@ -36,7 +36,7 @@ module Pokeviewer
     enumerize :unown_letter, in: [:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k,
       :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z,
       :question, :exclamation]
-      
+
     validates :slot, presence: true,
       uniqueness: { scope: [:trainer_id, :box] },
       unless: Proc.new { |a| a.trainer.nil? }
@@ -46,7 +46,22 @@ module Pokeviewer
     end
 
     def icon_path
-      "pokeviewer/icons/#{species_id}.png"
+      form = ""
+      if species_id == 201
+        # Handle Unown form
+        form = "-#{unown_letter}"
+      elsif species_id == 386
+        # Handle Deoxys forms
+        if trainer.firered?
+          form = "-attack"
+        elsif trainer.leafgreen?
+          form = "-defense"
+        elsif trainer.emerald?
+          form = "-speed"
+        end
+      end
+
+      "pokeviewer/icons/#{species_id}#{form}.png"
     end
 
     def sprite_path
