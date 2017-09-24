@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924035127) do
+ActiveRecord::Schema.define(version: 20170924152817) do
 
   create_table "pokeviewer_moves", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170924035127) do
     t.string "unown_letter", limit: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ot_gender", default: "", null: false
     t.index ["key"], name: "index_pokeviewer_pokemon_on_key", unique: true
     t.index ["species_id"], name: "index_pokeviewer_pokemon_on_species_id"
     t.index ["trainer_id"], name: "index_pokeviewer_pokemon_on_trainer_id"

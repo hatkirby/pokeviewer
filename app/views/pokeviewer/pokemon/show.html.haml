@@ -6,7 +6,7 @@
     .pokemon-name= @pokemon.revisions.last.nickname
     .pokemon-ot
       OT/
-      %span{ class: @pokemon.gender }>= @pokemon.ot_name
+      %span{ class: @pokemon.ot_gender }>= @pokemon.ot_name
     .pokemon-id= "ID/#{@pokemon.ot_number}"
     .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
   %table.pokemon-ivs

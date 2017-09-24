@@ -14,6 +14,9 @@ module Pokeviewer
     validates :ot_number, presence: true,
       numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
+    validates :ot_gender, presence: true
+    enumerize :ot_gender, in: [:female, :male]
+
     validates :met_level, presence: true,
       numericality: { greater_than_or_equal_to: 1, only_integer: true },
       if: Proc.new { |a| a.met_type == :normal }

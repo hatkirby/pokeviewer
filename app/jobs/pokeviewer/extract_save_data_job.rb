@@ -27,6 +27,7 @@ module Pokeviewer
           r.species_id = param["species"]
           r.ot_name = param["otName"]
           r.ot_number = param["otId"]
+          r.ot_gender = param["otGender"]
 
           if param["metLevel"] == 0
             r.met_type = :hatched
