@@ -79,6 +79,7 @@
           vertical-align: sub;
           display: inline-block;
           margin-left: .25em;
+          white-space: pre;
         }
 
         a {
@@ -127,6 +128,7 @@
 
             .pc-data-name {
               font-weight: bold;
+              white-space: pre;
             }
           }
         }
@@ -150,6 +152,7 @@
 
   .pokemon-name {
     font-weight: bold;
+    white-space: pre;
   }
 
   .pokemon-ivs {
