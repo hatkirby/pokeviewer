@@ -108,6 +108,12 @@
       .pc-contents {
         margin: 0;
 
+        .spacer {
+          display: block;
+          width: 32px;
+          height: 32px;
+        }
+
         .pc-pokemon {
           .pc-data {
             display: none;

@@ -18,7 +18,9 @@
               %tr
                 - row.each do |p|
                   %td.pc-pokemon
-                    - unless p.nil?
+                    - if p.nil?
+                      .spacer
+                    - else
                       = link_to image_tag(p.icon_path), p
                       .pc-data
                         .pc-data-name= p.revisions.last.nickname
