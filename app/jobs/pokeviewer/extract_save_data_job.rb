@@ -39,9 +39,16 @@ module Pokeviewer
 
           if param["metLevel"] == 0
             r.met_type = :hatched
+            r.met_location = param["metLocation"]
+          elsif param["metLocation"] == 254
+            r.met_type = :npc_trade
+          elsif param["metLocation"] == 255
+            r.met_type = :fateful_encounter
+            r.met_level = param["metLevel"]
           else
             r.met_type = :normal
             r.met_level = param["metLevel"]
+            r.met_location = param["metLocation"]
           end
 
           r.shiny = param["shiny"]

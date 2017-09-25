@@ -7,24 +7,33 @@
     .pokemon-ot
       OT/
       %span{ class: @pokemon.ot_gender }>= @pokemon.ot_name
-    .pokemon-id= "ID/#{@pokemon.ot_number}"
+    .pokemon-id= "ID/#{@pokemon.display_ot_number}"
     .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
-  %table.pokemon-ivs
-    %tr
-      %th HP
-      %td= @pokemon.revisions.last.hp
-    %tr
-      %th Attack
-      %td= @pokemon.revisions.last.attack
-    %tr
-      %th Defense
-      %td= @pokemon.revisions.last.defense
-    %tr
-      %th Sp. Atk
-      %td= @pokemon.revisions.last.special_attack
-    %tr
-      %th Sp. Def
-      %td= @pokemon.revisions.last.special_defense
-    %tr
-      %th Speed
-      %td= @pokemon.revisions.last.speed
+  .pokemon-memo
+    .pd-details Trainer Memo
+    .pd-contents
+      %p
+        %span.pokemon-nature<= @pokemon.nature.titlecase
+        nature.
+      %p= @pokemon.display_met
+  .pokemon-stats
+    .pd-details Stats
+    %table.pd-contents
+      %tr
+        %th HP
+        %td= @pokemon.revisions.last.hp
+      %tr
+        %th Attack
+        %td= @pokemon.revisions.last.attack
+      %tr
+        %th Defense
+        %td= @pokemon.revisions.last.defense
+      %tr
+        %th Sp. Atk
+        %td= @pokemon.revisions.last.special_attack
+      %tr
+        %th Sp. Def
+        %td= @pokemon.revisions.last.special_defense
+      %tr
+        %th Speed
+        %td= @pokemon.revisions.last.speed

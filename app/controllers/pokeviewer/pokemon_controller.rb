@@ -7,7 +7,7 @@ module Pokeviewer
     end
 
     def show
-      @pokemon = Pokemon.find_by_uuid params[:id]
+      @pokemon = Pokemon.find_by_uuid! params[:id]
     end
   end
 end

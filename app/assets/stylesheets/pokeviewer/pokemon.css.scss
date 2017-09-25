@@ -141,6 +141,9 @@
   font-family: 'Power Green';
   display: flex;
   margin: 1em;
+  border: 1px solid #777;
+  border-radius: 5px;
+  background-color: #fafafa;
 
   .male {
     color: blue;
@@ -155,16 +158,49 @@
     white-space: pre;
   }
 
-  .pokemon-ivs {
-    margin: 0 1em;
+  .pd-details {
+    color: white;
+    font-size: bold;
+    padding: .25em .5em;
+  }
 
-    th {
-      text-align: center;
-      padding-right: .5em;
+  .pd-contents {
+    p {
+      margin: .25em;
+    }
+  }
+
+  .pokemon-basics {
+    margin: .5em;
+  }
+
+  .pokemon-memo {
+    border-left: 1px solid #aaa;
+    background-color: #e7e8ff;
+
+    .pd-details {
+      background-color: #2068e0;
+    }
+  }
+
+  .pokemon-stats {
+    border-left: 1px solid #aaa;
+
+    .pd-details {
+      background-color: #d078f8;
     }
 
-    td {
-      text-align: right;
+    table {
+      margin: 0 1em;
+
+      th {
+        text-align: center;
+        padding-right: .5em;
+      }
+
+      td {
+        text-align: right;
+      }
     }
   }
 }
