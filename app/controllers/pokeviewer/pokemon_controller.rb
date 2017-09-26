@@ -4,6 +4,7 @@ module Pokeviewer
   class PokemonController < ApplicationController
     def index
       @trainers = Trainer.all
+      @unaccounted = Pokemon.where(trainer: nil)
     end
 
     def show

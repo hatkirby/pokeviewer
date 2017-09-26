@@ -47,6 +47,14 @@
       background-color: #4E8234;
     }
 
+    &.unaccounted {
+      background-color: black;
+
+      h2 {
+        color: white;
+      }
+    }
+
     h2 {
       margin: 0;
       display: inline-block;
@@ -114,26 +122,36 @@
           width: 32px;
           height: 32px;
         }
-
-        .pc-pokemon {
-          .pc-data {
-            display: none;
-            background-color: #111;
-            color: #fff;
-            z-index: 1;
-            padding: .5em;
-            box-shadow: 0px 0px 2px 1px #B3B3B3;
-            border-radius: 4px;
-            position: absolute;
-
-            .pc-data-name {
-              font-weight: bold;
-              white-space: pre;
-            }
-          }
-        }
       }
     }
+  }
+}
+
+.pc-pokemon {
+  .pc-data {
+    display: none;
+    background-color: #111;
+    color: #fff;
+    z-index: 1;
+    padding: .5em;
+    box-shadow: 0px 0px 2px 1px #B3B3B3;
+    border-radius: 4px;
+    position: absolute;
+
+    .pc-data-name {
+      font-weight: bold;
+      white-space: pre;
+    }
+  }
+}
+
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em;
+
+  li {
+    display: block;
   }
 }
 

@@ -102,7 +102,7 @@ module Pokeviewer
     end
 
     def outsider?
-      (ot_name != trainer.name) or (ot_number != trainer.number)
+      (trainer.nil?) or (ot_name != trainer.name) or (ot_number != trainer.number)
     end
 
     def location

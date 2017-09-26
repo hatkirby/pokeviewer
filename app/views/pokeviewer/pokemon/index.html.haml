@@ -27,3 +27,16 @@
                         .pc-data-ot
                           OT/
                           %span{ class: p.ot_gender }>= p.ot_name
+- if @unaccounted.any?
+  .trainer
+    .trainer-info.unaccounted
+      %h2 Pokémon Not In Any Game
+    %ul.pokemon-list
+      - @unaccounted.each do |p|
+        %li.pc-pokemon
+          = link_to image_tag(p.icon_path), p
+          .pc-data
+            .pc-data-name= p.revisions.last.nickname
+            .pc-data-ot
+              OT/
+              %span{ class: p.ot_gender }>= p.ot_name
