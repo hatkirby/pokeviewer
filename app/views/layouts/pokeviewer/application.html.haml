@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title Pokeviewer
+    = stylesheet_link_tag "pokeviewer/application", media: "all"
+    = javascript_include_tag "pokeviewer/application"
+    = csrf_meta_tags
+  %body
+    %header#banner Pokéviewer
+    #container
+      #left-sidebar
+        Sidebar stuff
+      #content= yield
+      #right-sidebar
+        Sidebar stuff

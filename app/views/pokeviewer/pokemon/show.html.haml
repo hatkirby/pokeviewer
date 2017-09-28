@@ -9,31 +9,70 @@
       %span{ class: @pokemon.ot_gender }>= @pokemon.ot_name
     .pokemon-id= "ID/#{@pokemon.display_ot_number}"
     .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
-  .pokemon-memo
-    .pd-details Trainer Memo
-    .pd-contents
-      %p
-        %span.pokemon-nature<= @pokemon.nature.titlecase
-        nature.
-      %p= @pokemon.display_met
-  .pokemon-stats
-    .pd-details Stats
-    %table.pd-contents
-      %tr
-        %th HP
-        %td= @pokemon.revisions.last.hp
-      %tr
-        %th Attack
-        %td= @pokemon.revisions.last.attack
-      %tr
-        %th Defense
-        %td= @pokemon.revisions.last.defense
-      %tr
-        %th Sp. Atk
-        %td= @pokemon.revisions.last.special_attack
-      %tr
-        %th Sp. Def
-        %td= @pokemon.revisions.last.special_defense
-      %tr
-        %th Speed
-        %td= @pokemon.revisions.last.speed
+  .pokemon-column
+    .pokemon-stats
+      .pd-details Stats
+      %table.pd-contents
+        %tr
+          %th HP
+          %th
+            Attack
+            - if @pokemon.nature_benefits?(:attack)
+              %span.nature-benefit +
+            - if @pokemon.nature_hinders?(:attack)
+              %span.nature-hinder -
+          %th
+            Defense
+            - if @pokemon.nature_benefits?(:defense)
+              %span.nature-benefit +
+            - if @pokemon.nature_hinders?(:defense)
+              %span.nature-hinder -
+          %th
+            Sp. Atk
+            - if @pokemon.nature_benefits?(:special_attack)
+              %span.nature-benefit +
+            - if @pokemon.nature_hinders?(:special_attack)
+              %span.nature-hinder -
+          %th
+            Sp. Def
+            - if @pokemon.nature_benefits?(:special_defense)
+              %span.nature-benefit +
+            - if @pokemon.nature_hinders?(:special_defense)
+              %span.nature-hinder -
+          %th
+            Speed
+            - if @pokemon.nature_benefits?(:speed)
+              %span.nature-benefit +
+            - if @pokemon.nature_hinders?(:speed)
+              %span.nature-hinder -
+        %tr
+          %td= @pokemon.revisions.last.hp
+          %td= @pokemon.revisions.last.attack
+          %td= @pokemon.revisions.last.defense
+          %td= @pokemon.revisions.last.special_attack
+          %td= @pokemon.revisions.last.special_defense
+          %td= @pokemon.revisions.last.speed
+    .pokemon-row
+      .pokemon-moves
+        .pd-details Moves
+        %ul
+          %li= @pokemon.revisions.last.move_1.name
+          - if @pokemon.revisions.last.move_2
+            %li= @pokemon.revisions.last.move_2.name
+          - else
+            %li -
+          - if @pokemon.revisions.last.move_3
+            %li= @pokemon.revisions.last.move_3.name
+          - else
+            %li -
+          - if @pokemon.revisions.last.move_4
+            %li= @pokemon.revisions.last.move_4.name
+          - else
+            %li -
+      .pokemon-memo
+        .pd-details Trainer Memo
+        .pd-contents
+          %p
+            %span.pokemon-nature<= @pokemon.nature.titlecase
+            nature.
+          %p= @pokemon.display_met

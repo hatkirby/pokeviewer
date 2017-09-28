@@ -137,6 +137,38 @@ module Pokeviewer
       end
     end
 
+    def nature_benefits?(stat)
+      if stat == :attack
+        [:lonely, :brave, :adamant, :naughty].include? nature.intern
+      elsif stat == :defense
+        [:bold, :relaxed, :impish, :lax].include? nature.intern
+      elsif stat == :speed
+        [:timid, :hasty, :jolly, :naive].include? nature.intern
+      elsif stat == :special_attack
+        [:modest, :mild, :quiet, :rash].include? nature.intern
+      elsif stat == :special_defense
+        [:calm, :gentle, :sassy, :careful].include? nature.intern
+      else
+        false
+      end
+    end
+
+    def nature_hinders?(stat)
+      if stat == :attack
+        [:bold, :timid, :modest, :calm].include? nature.intern
+      elsif stat == :defense
+        [:lonely, :hasty, :mild, :gentle].include? nature.intern
+      elsif stat == :speed
+        [:brave, :relaxed, :quiet, :sassy].include? nature.intern
+      elsif stat == :special_attack
+        [:adamant, :impish, :jolly, :careful].include? nature.intern
+      elsif stat == :special_defense
+        [:naughty, :lax, :naive, :rash].include? nature.intern
+      else
+        false
+      end
+    end
+
     private
 
       def set_uuid

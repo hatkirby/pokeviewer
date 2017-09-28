@@ -3,10 +3,34 @@
   They will automatically be included in application.css.
 */
 
+body {
+
+}
+
+#left-sidebar, #right-sidebar {
+  flex: 3 0px;
+}
+
+#container {
+  display: flex;
+
+}
+
+#banner {
+  box-sizing: border-box;
+  height: 10em;
+  margin: 0 auto;
+  width: 60%;
+}
+
+#content {
+  flex: 10 0px;
+}
+
 .trainer {
   margin: 1em;
   font-family: 'Power Green';
-  width: 758px;
+/*  width: 758px;*/
   box-sizing: border-box;
   background-color: #f7f7f7;
   border: 1px solid #999;
@@ -70,6 +94,7 @@
   .pc-boxes {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     .party {
       margin: 0;
@@ -192,32 +217,86 @@
     margin: .5em;
   }
 
-  .pokemon-memo {
+  .pokemon-column {
+    display: flex;
+    flex-direction: column;
     border-left: 1px solid #aaa;
+
+    &>div + div {
+      border-top: 1px solid #aaa;
+    }
+  }
+
+  .pokemon-row {
+    display: flex;
+    flex: 1 0px;
+
+    &>div + div {
+      border-left: 1px solid #aaa;
+    }
+  }
+
+  .pokemon-memo {
     background-color: #e7e8ff;
+    flex-grow: 1;
 
     .pd-details {
-      background-color: #2068e0;
+      background-color: #be3ff8; /*#d078f8;*/
+    }
+  }
+
+  .pokemon-moves {
+    flex-grow: 1;
+
+    .pd-details {
+      background-color: #3fb5f8;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: block;
+        padding: 0.25em;
+        box-sizing: border-box;
+      }
     }
   }
 
   .pokemon-stats {
-    border-left: 1px solid #aaa;
+    background-color: #d7f4f6;
 
     .pd-details {
-      background-color: #d078f8;
+      background-color: #2068e0;
+      border-bottom: 1px solid #A9C6C8;
+    }
+
+    .nature-benefit {
+      color: green;
+    }
+
+    .nature-hinder {
+      color: red;
     }
 
     table {
-      margin: 0 1em;
+      border-collapse: collapse;
+      border-style: hidden;
+      table-layout: fixed;
 
-      th {
+      th, td {
         text-align: center;
-        padding-right: .5em;
+        border: 1px solid #A9C6C8;
+        padding: 0.25em 0.25em;
+        width: 16.67%;
       }
 
-      td {
-        text-align: right;
+      th {
+        background-color: #bfdfff;
       }
     }
   }
