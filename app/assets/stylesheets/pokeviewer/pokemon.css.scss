@@ -333,8 +333,14 @@ body {
       fill-opacity: 0.3;
     }
 
+    .pkcv-line {
+      stroke: gray;
+      stroke-width: 2;
+    }
+
     .pkcv-data {
       fill: #4ee100;
+      fill-opacity: 0.9;
     }
 
     .pkcv-label, .pkcv-label-outline {

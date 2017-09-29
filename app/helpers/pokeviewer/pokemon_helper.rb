@@ -52,9 +52,18 @@ module Pokeviewer
         [center_x + x_offset, center_y + y_offset]
       end
 
-      svg.polygon points: outline.map { |point| point * "," } * " ", class: "pkcv-outline"
+      svg.polygon(
+        points: outline.map { |point| point * "," } * " ",
+        class: "pkcv-outline")
 
       points = data.map do |c|
+        svg.line(
+          x1: center_x,
+          y1: center_y,
+          x2: center_x + radius * Math.cos(angle),
+          y2: center_y + radius * Math.sin(angle),
+          class: "pkcv-line")
+
         datapoint = c[1]
         datapoint = 0.01 if datapoint < 1
         datapoint /= 10.0
@@ -68,11 +77,13 @@ module Pokeviewer
         [center_x + x_offset, center_y + y_offset]
       end
 
-      svg.polygon points: points.map { |point| point * "," } * " ", class: "pkcv-data"
+      svg.polygon(
+        points: points.map { |point| point * "," } * " ",
+        class: "pkcv-data")
 
       tag.svg(svg.to_s.html_safe,
-        viewBox: "0 -30 410 430",
-        width: 410,
+        viewBox: "-80 -30 570 430",
+        width: 300,
         class: "pokemon-condition")
     end
 
