@@ -76,3 +76,4 @@
             %span.pokemon-nature<= @pokemon.nature.titlecase
             nature.
           %p= @pokemon.display_met
+  = condition_diagram @pokemon.revisions.last
