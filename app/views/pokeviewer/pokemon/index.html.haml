@@ -17,12 +17,12 @@
             - box.contents.each_slice(6) do |row|
               %tr
                 - row.each do |p|
-                  %td.pc-pokemon
+                  %td.pc-pokemon.pkv-has-hover
                     - if p.nil?
                       .spacer
                     - else
                       = link_to image_tag(p.icon_path), p
-                      .pc-data
+                      .pc-data.pkv-hover
                         .pc-data-name= p.revisions.last.nickname
                         .pc-data-ot
                           OT/
@@ -33,9 +33,9 @@
       %h2 Pokémon Not In Any Game
     %ul.pokemon-list
       - @unaccounted.each do |p|
-        %li.pc-pokemon
+        %li.pc-pokemon.pkv-has-hover
           = link_to image_tag(p.icon_path), p
-          .pc-data
+          .pc-data.pkv-hover
             .pc-data-name= p.revisions.last.nickname
             .pc-data-ot
               OT/

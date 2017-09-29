@@ -109,6 +109,24 @@ module Pokeviewer
           rev.move_4_pp_bonuses = param["moves"][3]["ppBonuses"]
         end
 
+        rev.cool_ribbons = param["coolRibbons"]
+        rev.beauty_ribbons = param["beautyRibbons"]
+        rev.cute_ribbons = param["cuteRibbons"]
+        rev.smart_ribbons = param["smartRibbons"]
+        rev.tough_ribbons = param["toughRibbons"]
+        rev.champion_ribbon = param.fetch "championRibbon", false
+        rev.winning_ribbon = param.fetch "winningRibbon", false
+        rev.victory_ribbon = param.fetch "victoryRibbon", false
+        rev.artist_ribbon = param.fetch "artistRibbon", false
+        rev.effort_ribbon = param.fetch "effortRibbon", false
+        rev.marine_ribbon = param.fetch "marineRibbon", false
+        rev.land_ribbon = param.fetch "landRibbon", false
+        rev.sky_ribbon = param.fetch "skyRibbon", false
+        rev.country_ribbon = param.fetch "countryRibbon", false
+        rev.national_ribbon = param.fetch "nationalRibbon", false
+        rev.earth_ribbon = param.fetch "earthRibbon", false
+        rev.world_ribbon = param.fetch "worldRibbon", false
+
         if pk.revisions.empty? or rev.diff?(pk.revisions.last)
           rev.save!
         end

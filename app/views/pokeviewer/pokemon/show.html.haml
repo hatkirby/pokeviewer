@@ -76,4 +76,15 @@
             %span.pokemon-nature<= @pokemon.nature.titlecase
             nature.
           %p= @pokemon.display_met
-  = condition_diagram @pokemon.revisions.last
+  .pokemon-contest
+    .pd-details Contest Condition
+    = condition_diagram @pokemon.revisions.last
+  .pokemon-ribbons
+    .pd-details Ribbons
+    %ul
+      - @pokemon.revisions.last.ribbons.each do |ribbon|
+        %li.pkv-has-hover
+          = image_tag("pokeviewer/ribbons/#{ribbon[:filename]}")
+          .pkv-hover
+            .pc-data-name= ribbon[:name]
+            = ribbon[:description]

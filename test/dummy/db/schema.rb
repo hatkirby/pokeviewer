@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925013807) do
+ActiveRecord::Schema.define(version: 20170929211529) do
 
   create_table "pokeviewer_boxes", force: :cascade do |t|
     t.integer "trainer_id", null: false
@@ -91,6 +91,23 @@ ActiveRecord::Schema.define(version: 20170925013807) do
     t.integer "move_4_pp_bonuses", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cool_ribbons", default: 0, null: false
+    t.integer "beauty_ribbons", default: 0, null: false
+    t.integer "cute_ribbons", default: 0, null: false
+    t.integer "smart_ribbons", default: 0, null: false
+    t.integer "tough_ribbons", default: 0, null: false
+    t.boolean "champion_ribbon", default: false
+    t.boolean "winning_ribbon", default: false
+    t.boolean "victory_ribbon", default: false
+    t.boolean "artist_ribbon", default: false
+    t.boolean "effort_ribbon", default: false
+    t.boolean "marine_ribbon", default: false
+    t.boolean "land_ribbon", default: false
+    t.boolean "sky_ribbon", default: false
+    t.boolean "country_ribbon", default: false
+    t.boolean "national_ribbon", default: false
+    t.boolean "earth_ribbon", default: false
+    t.boolean "world_ribbon", default: false
     t.index ["move_1_id"], name: "index_pokeviewer_revisions_on_move_1_id"
     t.index ["move_2_id"], name: "index_pokeviewer_revisions_on_move_2_id"
     t.index ["move_3_id"], name: "index_pokeviewer_revisions_on_move_3_id"

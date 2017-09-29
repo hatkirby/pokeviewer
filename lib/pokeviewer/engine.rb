@@ -19,7 +19,8 @@ module Pokeviewer
           pokeviewer/sprites/**/*.png
           pokeviewer/sprites/**/*.gif
           pokeviewer/types/**.gif
-          pokeviewer/boxes/**.png)
+          pokeviewer/boxes/**.png
+          pokeviewer/ribbons/**.png)
     end
   end
 end
