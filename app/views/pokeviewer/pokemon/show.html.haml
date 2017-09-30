@@ -88,3 +88,13 @@
           .pkv-hover
             .pc-data-name= ribbon[:name]
             = ribbon[:description]
+  .pokemon-etc
+    .pd-details Misc
+    - unless @pokemon.revisions.last.item.nil?
+      .pd-hold-item.pkv-has-hover
+        = image_tag(@pokemon.revisions.last.item.icon_path)
+        .pkv-hover
+          .pc-data-name= @pokemon.revisions.last.item.name
+          - if @pokemon.revisions.last.item.tm?
+            .pc-move-name= @pokemon.revisions.last.item.move.name
+          = @pokemon.revisions.last.item.description(@pokemon.trainer.game)

@@ -6,7 +6,7 @@ module Pokeviewer
 
     diff :nickname, :level, :hp, :attack, :defense,
       :special_attack, :special_defense, :speed, :coolness, :beauty, :cuteness,
-      :smartness, :toughness, :sheen, :hold_item, :move_1_id, :move_2_id,
+      :smartness, :toughness, :sheen, :item_id, :move_1_id, :move_2_id,
       :move_3_id, :move_4_id, :move_1_pp_bonuses, :move_2_pp_bonuses,
       :move_3_pp_bonuses, :move_4_pp_bonuses, :cool_ribbons, :beauty_ribbons,
       :cute_ribbons, :smart_ribbons, :tough_ribbons, :champion_ribbon,
@@ -78,6 +78,8 @@ module Pokeviewer
         greater_than_or_equal_to: 0,
         less_than_or_equal_to: 10,
         only_integer: true }
+
+    belongs_to :item, optional: true
 
     belongs_to :move_1, class_name: "Move"
     belongs_to :move_2, class_name: "Move", optional: true

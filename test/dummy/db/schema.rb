@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930021856) do
+ActiveRecord::Schema.define(version: 20170930213633) do
 
   create_table "pokeviewer_boxes", force: :cascade do |t|
     t.integer "trainer_id", null: false
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170930021856) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pokeviewer_items", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "tm", default: false, null: false
+    t.integer "move_id"
+    t.string "rs_description"
+    t.string "frlg_description"
+    t.string "emerald_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["move_id"], name: "index_pokeviewer_items_on_move_id"
+  end
+
   create_table "pokeviewer_locations", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -39,6 +51,10 @@ ActiveRecord::Schema.define(version: 20170930021856) do
     t.integer "pp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "move_type", null: false
+    t.string "rs_description", null: false
+    t.string "frlg_description", null: false
+    t.string "emerald_description"
     t.index ["name"], name: "index_pokeviewer_moves_on_name", unique: true
   end
 
@@ -86,7 +102,7 @@ ActiveRecord::Schema.define(version: 20170930021856) do
     t.integer "smartness", null: false
     t.integer "toughness", null: false
     t.integer "sheen", null: false
-    t.integer "hold_item"
+    t.integer "item_id"
     t.integer "move_1_id", null: false
     t.integer "move_2_id"
     t.integer "move_3_id"

@@ -120,7 +120,7 @@ module Pokeviewer
         rev.smartness = param["smartness"]
         rev.toughness = param["toughness"]
         rev.sheen = param["sheen"]
-        rev.hold_item = param["heldItem"]
+        rev.item_id = param["heldItem"] if param.key? "heldItem"
         rev.move_1_id = param["moves"][0]["id"]
         rev.move_1_pp_bonuses = param["moves"][0]["ppBonuses"]
 

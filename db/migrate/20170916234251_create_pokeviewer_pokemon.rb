@@ -25,7 +25,7 @@ class CreatePokeviewerPokemon < ActiveRecord::Migration[5.1]
     add_foreign_key :pokeviewer_pokemon, :pokeviewer_species,
       column: :species_id
 
-    add_foreign_key :pokeviewer_pokemon, :pokeviewer_trainer,
+    add_foreign_key :pokeviewer_pokemon, :pokeviewer_trainers,
       column: :trainer_id
   end
 end

@@ -18,9 +18,11 @@ module Pokeviewer
         %w(pokeviewer/icons/*.png
           pokeviewer/sprites/**/*.png
           pokeviewer/sprites/**/*.gif
-          pokeviewer/types/**.gif
-          pokeviewer/boxes/**.png
-          pokeviewer/ribbons/**.png)
+          pokeviewer/types/*.gif
+          pokeviewer/boxes/*.png
+          pokeviewer/ribbons/*.png
+          pokeviewer/items/*.png
+          pokeviewer/items/**/*.png)
     end
   end
 end
