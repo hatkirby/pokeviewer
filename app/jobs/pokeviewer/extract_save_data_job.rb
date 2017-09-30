@@ -22,6 +22,36 @@ module Pokeviewer
           end
         end
 
+      if args.key? "marineRibbon"
+        game.marine_ribbon = GiftRibbon.find_by_id(args["marineRibbon"])
+      end
+
+      if args.key? "landRibbon"
+        game.land_ribbon = GiftRibbon.find_by_id(args["landRibbon"])
+      end
+
+      if args.key? "skyRibbon"
+        game.sky_ribbon = GiftRibbon.find_by_id(args["skyRibbon"])
+      end
+
+      if args.key? "countryRibbon"
+        game.country_ribbon = GiftRibbon.find_by_id(args["countryRibbon"])
+      end
+
+      if args.key? "nationalRibbon"
+        game.national_ribbon = GiftRibbon.find_by_id(args["nationalRibbon"])
+      end
+
+      if args.key? "earthRibbon"
+        game.earth_ribbon = GiftRibbon.find_by_id(args["earthRibbon"])
+      end
+
+      if args.key? "worldRibbon"
+        game.world_ribbon = GiftRibbon.find_by_id(args["worldRibbon"])
+      end
+
+      game.save! if game.changed?
+
       args["boxes"].each_with_index do |box_name,index|
         box = Box.find_or_initialize_by(trainer: game, number: index)
         box.name = box_name

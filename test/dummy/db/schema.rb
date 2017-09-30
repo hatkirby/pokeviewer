@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929211529) do
+ActiveRecord::Schema.define(version: 20170930021856) do
 
   create_table "pokeviewer_boxes", force: :cascade do |t|
     t.integer "trainer_id", null: false
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20170929211529) do
     t.datetime "updated_at", null: false
     t.index ["trainer_id", "number"], name: "index_pokeviewer_boxes_on_trainer_id_and_number", unique: true
     t.index ["trainer_id"], name: "index_pokeviewer_boxes_on_trainer_id"
+  end
+
+  create_table "pokeviewer_gift_ribbons", force: :cascade do |t|
+    t.string "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pokeviewer_locations", force: :cascade do |t|
@@ -129,7 +135,21 @@ ActiveRecord::Schema.define(version: 20170929211529) do
     t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "marine_ribbon_id"
+    t.integer "land_ribbon_id"
+    t.integer "sky_ribbon_id"
+    t.integer "country_ribbon_id"
+    t.integer "national_ribbon_id"
+    t.integer "earth_ribbon_id"
+    t.integer "world_ribbon_id"
+    t.index ["country_ribbon_id"], name: "index_pokeviewer_trainers_on_country_ribbon_id"
+    t.index ["earth_ribbon_id"], name: "index_pokeviewer_trainers_on_earth_ribbon_id"
+    t.index ["land_ribbon_id"], name: "index_pokeviewer_trainers_on_land_ribbon_id"
+    t.index ["marine_ribbon_id"], name: "index_pokeviewer_trainers_on_marine_ribbon_id"
     t.index ["name", "number"], name: "index_pokeviewer_trainers_on_name_and_number", unique: true
+    t.index ["national_ribbon_id"], name: "index_pokeviewer_trainers_on_national_ribbon_id"
+    t.index ["sky_ribbon_id"], name: "index_pokeviewer_trainers_on_sky_ribbon_id"
+    t.index ["world_ribbon_id"], name: "index_pokeviewer_trainers_on_world_ribbon_id"
   end
 
 end

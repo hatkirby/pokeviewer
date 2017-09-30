@@ -16,12 +16,30 @@ module Pokeviewer
     enumerize :game, in: [:ruby, :sapphire, :firered, :leafgreen, :emerald],
       predicates: true
 
+    belongs_to :marine_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :land_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :sky_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :country_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :national_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :earth_ribbon, class_name: "GiftRibbon", optional: true
+    belongs_to :world_ribbon, class_name: "GiftRibbon", optional: true
+
     def display_number
       number.to_s.rjust(5, '0')
     end
 
     def party
       pokemon.where(box: nil).order("slot ASC")
+    end
+
+    def gift_ribbon_description(ribbon)
+      gift_ribbon = send ribbon
+
+      if gift_ribbon.nil?
+        ""
+      else
+        gift_ribbon.description
+      end
     end
   end
 end

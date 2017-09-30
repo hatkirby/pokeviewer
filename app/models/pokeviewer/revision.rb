@@ -345,7 +345,7 @@ module Pokeviewer
         result << {
           filename: "marine-ribbon.png",
           name: "Marine Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:marine_ribbon)
         }
       end
 
@@ -353,7 +353,7 @@ module Pokeviewer
         result << {
           filename: "land-ribbon.png",
           name: "Land Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:land_ribbon)
         }
       end
 
@@ -361,7 +361,7 @@ module Pokeviewer
         result << {
           filename: "sky-ribbon.png",
           name: "Sky Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:sky_ribbon)
         }
       end
 
@@ -369,7 +369,7 @@ module Pokeviewer
         result << {
           filename: "country-ribbon.png",
           name: "Country Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:country_ribbon)
         }
       end
 
@@ -377,7 +377,7 @@ module Pokeviewer
         result << {
           filename: "national-ribbon.png",
           name: "National Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:national_ribbon)
         }
       end
 
@@ -385,7 +385,7 @@ module Pokeviewer
         result << {
           filename: "earth-ribbon.png",
           name: "Earth Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:earth_ribbon)
         }
       end
 
@@ -393,7 +393,7 @@ module Pokeviewer
         result << {
           filename: "world-ribbon.png",
           name: "World Ribbon",
-          description: ""
+          description: pokemon.trainer.gift_ribbon_description(:world_ribbon)
         }
       end
 
