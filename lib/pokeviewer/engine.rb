@@ -10,7 +10,7 @@ module Pokeviewer
     isolate_namespace Pokeviewer
 
     initializer "pokeviewer.assets" do |app|
-      app.config.assets.paths << Rails.root.join("app", "assets", "fonts")
+      app.config.assets.paths << root.join("app", "assets", "fonts")
     end
 
     initializer "pokeviewer.assets" do |app|
