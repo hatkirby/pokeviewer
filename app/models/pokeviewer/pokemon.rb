@@ -3,8 +3,35 @@ module Pokeviewer
     extend Enumerize
 
     belongs_to :species
-    belongs_to :trainer, optional: true
+
     has_many :revisions, -> { order "sequential_id ASC" }, dependent: :destroy
+
+    belongs_to :trainer, optional: true
+
+    validates :box, numericality: {
+        greater_than_or_equal_to: 1,
+        less_than_or_equal_to: 14,
+        only_integer: true },
+      allow_nil: true
+
+    validates :slot, presence: true,
+      uniqueness: { scope: [:trainer_id, :box] },
+      numericality: {
+        greater_than_or_equal_to: 0,
+        only_integer: true },
+      unless: Proc.new { |a| a.trainer_id.nil? }
+
+    validates :slot,
+      numericality: { less_than: 30 },
+      unless: Proc.new { |a| a.trainer_id.nil? or a.box.nil? }
+
+    validates :slot,
+      numericality: { less_than: 6 },
+      unless: Proc.new { |a| a.trainer_id.nil? or not a.box.nil? }
+
+    scope :party, -> { where(box: nil) }
+    scope :box, ->(n) { where(box: n) }
+    scope :unaccounted, -> { where(trainer_id: nil) }
 
     validate :uuid_is_constant, on: :update
     before_create :set_uuid
@@ -40,10 +67,6 @@ module Pokeviewer
     enumerize :unown_letter, in: [:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k,
       :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z,
       :question, :exclamation]
-
-    validates :slot, presence: true,
-      uniqueness: { scope: [:trainer_id, :box] },
-      unless: Proc.new { |a| a.trainer.nil? }
 
     def to_param
       uuid

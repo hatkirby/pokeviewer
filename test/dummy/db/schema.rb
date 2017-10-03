@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003154157) do
-
-  create_table "pokeviewer_boxes", force: :cascade do |t|
-    t.integer "trainer_id", null: false
-    t.integer "number", null: false
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trainer_id", "number"], name: "index_pokeviewer_boxes_on_trainer_id_and_number", unique: true
-    t.index ["trainer_id"], name: "index_pokeviewer_boxes_on_trainer_id"
-  end
+ActiveRecord::Schema.define(version: 20171003191205) do
 
   create_table "pokeviewer_gift_ribbons", force: :cascade do |t|
     t.string "description", null: false
@@ -158,6 +148,20 @@ ActiveRecord::Schema.define(version: 20171003154157) do
     t.integer "national_ribbon_id"
     t.integer "earth_ribbon_id"
     t.integer "world_ribbon_id"
+    t.string "box_1_name", null: false
+    t.string "box_2_name", null: false
+    t.string "box_3_name", null: false
+    t.string "box_4_name", null: false
+    t.string "box_5_name", null: false
+    t.string "box_6_name", null: false
+    t.string "box_7_name", null: false
+    t.string "box_8_name", null: false
+    t.string "box_9_name", null: false
+    t.string "box_10_name", null: false
+    t.string "box_11_name", null: false
+    t.string "box_12_name", null: false
+    t.string "box_13_name", null: false
+    t.string "box_14_name", null: false
     t.index ["country_ribbon_id"], name: "index_pokeviewer_trainers_on_country_ribbon_id"
     t.index ["earth_ribbon_id"], name: "index_pokeviewer_trainers_on_earth_ribbon_id"
     t.index ["land_ribbon_id"], name: "index_pokeviewer_trainers_on_land_ribbon_id"

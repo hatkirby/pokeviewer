@@ -3,7 +3,7 @@ module Pokeviewer
     queue_as :default
 
     def perform(args)
-      game = Trainer.find_or_create_by!(
+      game = Trainer.find_or_initialize_by(
         name: args["playerName"],
         number: args["playerId"]) do |r|
           case args["gameId"].to_i
@@ -22,41 +22,50 @@ module Pokeviewer
           end
         end
 
+      game.box_1_name = args["boxes"].shift
+      game.box_2_name = args["boxes"].shift
+      game.box_3_name = args["boxes"].shift
+      game.box_4_name = args["boxes"].shift
+      game.box_5_name = args["boxes"].shift
+      game.box_6_name = args["boxes"].shift
+      game.box_7_name = args["boxes"].shift
+      game.box_8_name = args["boxes"].shift
+      game.box_9_name = args["boxes"].shift
+      game.box_10_name = args["boxes"].shift
+      game.box_11_name = args["boxes"].shift
+      game.box_12_name = args["boxes"].shift
+      game.box_13_name = args["boxes"].shift
+      game.box_14_name = args["boxes"].shift
+
       if args.key? "marineRibbon"
-        game.marine_ribbon = GiftRibbon.find_by_id(args["marineRibbon"])
+        game.marine_ribbon_id = args["marineRibbon"]
       end
 
       if args.key? "landRibbon"
-        game.land_ribbon = GiftRibbon.find_by_id(args["landRibbon"])
+        game.land_ribbon_id = args["landRibbon"]
       end
 
       if args.key? "skyRibbon"
-        game.sky_ribbon = GiftRibbon.find_by_id(args["skyRibbon"])
+        game.sky_ribbon_id = args["skyRibbon"]
       end
 
       if args.key? "countryRibbon"
-        game.country_ribbon = GiftRibbon.find_by_id(args["countryRibbon"])
+        game.country_ribbon_id = args["countryRibbon"]
       end
 
       if args.key? "nationalRibbon"
-        game.national_ribbon = GiftRibbon.find_by_id(args["nationalRibbon"])
+        game.national_ribbon_id = args["nationalRibbon"]
       end
 
       if args.key? "earthRibbon"
-        game.earth_ribbon = GiftRibbon.find_by_id(args["earthRibbon"])
+        game.earth_ribbon_id = args["earthRibbon"]
       end
 
       if args.key? "worldRibbon"
-        game.world_ribbon = GiftRibbon.find_by_id(args["worldRibbon"])
+        game.world_ribbon_id = args["worldRibbon"]
       end
 
-      game.save! if game.changed?
-
-      args["boxes"].each_with_index do |box_name,index|
-        box = Box.find_or_initialize_by(trainer: game, number: index)
-        box.name = box_name
-        box.save!
-      end
+      game.save! if game.new_record? or game.changed?
 
       game.pokemon.clear
 
@@ -97,7 +106,7 @@ module Pokeviewer
         if param["storage"] == "party"
           pk.box = nil
         elsif param["storage"] == "box"
-          pk.box = param["box"]
+          pk.box = param["box"] + 1
         end
 
         pk.slot = param["slot"]

@@ -12,9 +12,9 @@
             %span.party-name= link_to p.revisions.last.nickname, p
       - trainer.boxes.each do |box|
         .pc-box
-          %h3= box.name
+          %h3= box[:name]
           %table.pc-contents
-            - box.contents.each_slice(6) do |row|
+            - box[:pokemon].each_slice(6) do |row|
               %tr
                 - row.each do |p|
                   %td.pc-pokemon.pkv-has-hover

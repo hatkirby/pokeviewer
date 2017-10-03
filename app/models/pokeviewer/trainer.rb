@@ -3,7 +3,6 @@ module Pokeviewer
     extend Enumerize
 
     has_many :pokemon, dependent: :nullify
-    has_many :boxes, -> { order("number ASC") }, dependent: :destroy
 
     validates :number, presence: true,
       numericality: { greater_than_or_equal_to: 0, only_integer: true }
@@ -24,12 +23,61 @@ module Pokeviewer
     belongs_to :earth_ribbon, class_name: "GiftRibbon", optional: true
     belongs_to :world_ribbon, class_name: "GiftRibbon", optional: true
 
-    def display_number
-      number.to_s.rjust(5, '0')
-    end
+    validates :box_1_name, presence: true
+    validates :box_2_name, presence: true
+    validates :box_3_name, presence: true
+    validates :box_4_name, presence: true
+    validates :box_5_name, presence: true
+    validates :box_6_name, presence: true
+    validates :box_7_name, presence: true
+    validates :box_8_name, presence: true
+    validates :box_9_name, presence: true
+    validates :box_10_name, presence: true
+    validates :box_11_name, presence: true
+    validates :box_12_name, presence: true
+    validates :box_13_name, presence: true
+    validates :box_14_name, presence: true
 
     def party
-      pokemon.where(box: nil).order("slot ASC")
+      pokemon.party.includes(:species, :revisions)
+    end
+
+    def box(n)
+      pokemon.box(n).includes(:species, :revisions)
+    end
+
+    def box_name(n)
+      if n > 0 and n <= 14
+        send "box_#{n}_name".intern
+      else
+        nil
+      end
+    end
+
+    def box_contents(n)
+      pokes = box(n).to_a
+
+      result = []
+      (0..29).each do |i|
+        if pokes.empty? or (pokes.first.slot == i)
+          result << pokes.shift
+        else
+          result << nil
+        end
+      end
+
+      result
+    end
+
+    def boxes
+      (1..14).map { |n| {
+        name: box_name(n),
+        pokemon: box_contents(n)
+      }}
+    end
+
+    def display_number
+      number.to_s.rjust(5, '0')
     end
 
     def gift_ribbon_description(ribbon)
