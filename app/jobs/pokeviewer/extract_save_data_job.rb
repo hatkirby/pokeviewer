@@ -69,7 +69,7 @@ module Pokeviewer
 
           if param["metLevel"] == 0
             r.met_type = :hatched
-            r.met_location = param["metLocation"]
+            r.location_id = param["metLocation"]
           elsif param["metLocation"] == 254
             r.met_type = :npc_trade
           elsif param["metLocation"] == 255
@@ -78,7 +78,7 @@ module Pokeviewer
           else
             r.met_type = :normal
             r.met_level = param["metLevel"]
-            r.met_location = param["metLocation"]
+            r.location_id = param["metLocation"]
           end
 
           r.shiny = param["shiny"]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930213633) do
+ActiveRecord::Schema.define(version: 20171003154157) do
 
   create_table "pokeviewer_boxes", force: :cascade do |t|
     t.integer "trainer_id", null: false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20170930213633) do
     t.string "ot_name", null: false
     t.integer "ot_number", null: false
     t.string "met_type", null: false
-    t.string "met_location"
     t.integer "met_level"
     t.boolean "shiny", default: false, null: false
     t.string "nature", null: false
@@ -78,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170930213633) do
     t.string "ot_gender", default: "", null: false
     t.integer "box"
     t.integer "slot"
+    t.integer "location_id"
     t.index ["key"], name: "index_pokeviewer_pokemon_on_key", unique: true
     t.index ["species_id"], name: "index_pokeviewer_pokemon_on_species_id"
     t.index ["trainer_id"], name: "index_pokeviewer_pokemon_on_trainer_id"

@@ -24,6 +24,10 @@ module Pokeviewer
     validates :met_type, presence: true
     enumerize :met_type, in: [:normal, :hatched, :npc_trade, :fateful_encounter]
 
+    belongs_to :location, optional: true
+    validates :location, presence: true,
+      if: Proc.new { |c| c.met_type == :normal or c.met_type == :hatched}
+
     validates :gender, presence: true
     enumerize :gender, in: [:genderless, :female, :male]
 
@@ -103,14 +107,6 @@ module Pokeviewer
 
     def outsider?
       (trainer.nil?) or (ot_name != trainer.name) or (ot_number != trainer.number)
-    end
-
-    def location
-      if (met_type == :normal) or (met_type == :hatched)
-        Location.find_by_id(met_location)
-      else
-        nil
-      end
     end
 
     def display_ot_number
