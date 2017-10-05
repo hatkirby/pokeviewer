@@ -96,6 +96,7 @@ module Pokeviewer
           r.nature = Pokemon.nature.values[param["nature"]]
           r.gender = param["gender"]
           r.second_ability = param["secondAbility"]
+          r.pokeball = Pokemon.pokeball.values[param["pokeball"] - 1]
 
           # Handle Unown form
           if r.species_id == 201

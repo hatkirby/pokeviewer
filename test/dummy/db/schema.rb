@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003191205) do
+ActiveRecord::Schema.define(version: 20171004203404) do
 
   create_table "pokeviewer_gift_ribbons", force: :cascade do |t|
     t.string "description", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20171003191205) do
     t.integer "box"
     t.integer "slot"
     t.integer "location_id"
+    t.string "pokeball", null: false
     t.index ["key"], name: "index_pokeviewer_pokemon_on_key", unique: true
     t.index ["species_id"], name: "index_pokeviewer_pokemon_on_species_id"
     t.index ["trainer_id"], name: "index_pokeviewer_pokemon_on_trainer_id"

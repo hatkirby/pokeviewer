@@ -1,4 +1,4 @@
-.pokemon{ class: "in-#{@pokemon.trainer.game}" }
+.pokemon{ class: (not @pokemon.trainer.nil?) && "in-#{@pokemon.trainer.game}" }
   .pokemon-basics
     .pokemon-species-id= "No. #{@pokemon.species_id}"
     .pokemon-species-name= @pokemon.species.name
@@ -90,6 +90,7 @@
             = ribbon[:description]
   .pokemon-etc
     .pd-details Misc
+    = image_tag(@pokemon.pokeball_icon_path)
     - unless @pokemon.revisions.last.item.nil?
       .pd-hold-item.pkv-has-hover
         = image_tag(@pokemon.revisions.last.item.icon_path)

@@ -1,6 +1,7 @@
 module Pokeviewer
   class Pokemon < ApplicationRecord
     extend Enumerize
+    extend ActiveModel::Naming
 
     belongs_to :species
 
@@ -68,6 +69,10 @@ module Pokeviewer
     enumerize :unown_letter, in: [:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k,
       :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z,
       :question, :exclamation]
+
+    validates :pokeball, presence: true
+    enumerize :pokeball, in: [:master, :ultra, :great, :poke, :safari, :net,
+      :dive, :nest, :repeat, :timer, :luxury, :premier]
 
     def to_param
       uuid
@@ -189,6 +194,10 @@ module Pokeviewer
       else
         false
       end
+    end
+
+    def pokeball_icon_path
+      "pokeviewer/items/#{Pokemon.pokeball.values.find_index(pokeball) + 1}.png"
     end
 
     private
