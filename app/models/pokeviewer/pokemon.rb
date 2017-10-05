@@ -49,7 +49,8 @@ module Pokeviewer
       if: Proc.new { |a| a.met_type == :normal }
 
     validates :met_type, presence: true
-    enumerize :met_type, in: [:normal, :hatched, :npc_trade, :fateful_encounter]
+    enumerize :met_type,
+      in: [:normal, :hatched, :npc_trade, :fateful_encounter, :orre]
 
     belongs_to :location, optional: true
     validates :location, presence: true,
@@ -153,6 +154,8 @@ module Pokeviewer
         "Met in a trade."
       elsif met_type == :fateful_encounter
         "Obtained in a fateful encounter at Lv. #{met_level}."
+      elsif met_type == :orre
+        "Met in a trade."
       end
     end
 

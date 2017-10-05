@@ -76,7 +76,9 @@ module Pokeviewer
           r.ot_number = param["otId"]
           r.ot_gender = param["otGender"]
 
-          if param["metLevel"] == 0
+          if param["orre"]
+            r.met_type = :orre
+          elsif param["metLevel"] == 0
             r.met_type = :hatched
             r.location_id = param["metLocation"]
           elsif param["metLocation"] == 254
