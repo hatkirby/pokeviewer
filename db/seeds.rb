@@ -488,7 +488,7 @@ module Pokeviewer
   Move.create(id: 321, name: "Tickle", pp: 20, move_type: :normal,
     rs_description: "Makes the foe laugh to lower ATTACK and DEFENSE.",
     frlg_description: "The foe is made to laugh, reducing its ATTACK and DEFENSE stats.")
-  Move.create(id: 320, name: "Grass Whistle", pp: 15, move_type: :grass,
+  Move.create(id: 320, name: "GrassWhistle", pp: 15, move_type: :grass,
     rs_description: "Lulls the foe into sleep with a pleasant melody.",
     frlg_description: "A pleasant melody is played to lull the foe into a deep sleep.")
   Move.create(id: 319, name: "Metal Sound", pp: 40, move_type: :steel,
@@ -557,7 +557,7 @@ module Pokeviewer
   Move.create(id: 298, name: "Teeter Dance", pp: 20, move_type: :normal,
     rs_description: "Confuses all POKéMON on the scene.",
     frlg_description: "A wobbly dance that confuses all the POKéMON in battle.")
-  Move.create(id: 297, name: "Feather Dance", pp: 15, move_type: :flying,
+  Move.create(id: 297, name: "FeatherDance", pp: 15, move_type: :flying,
     rs_description: "Envelops the foe with down to sharply reduce ATTACK.",
     frlg_description: "The foe is covered with a mass of down that sharply cuts the ATTACK stat.")
   Move.create(id: 296, name: "Mist Ball", pp: 5, move_type: :psychic,
@@ -655,7 +655,7 @@ module Pokeviewer
   Move.create(id: 266, name: "Follow Me", pp: 20, move_type: :normal,
     rs_description: "Draws attention to make foes attack only the user.",
     frlg_description: "The user draws attention to itself, making foes attack only the user.")
-  Move.create(id: 265, name: "Smelling Salts", pp: 10, move_type: :normal,
+  Move.create(id: 265, name: "SmellingSalt", pp: 10, move_type: :normal,
     rs_description: "Powerful against paralyzed foes, but also heals them.",
     frlg_description: "Doubly effective on a paralyzed foe, but it also cures the foe's paralysis.")
   Move.create(id: 264, name: "Focus Punch", pp: 20, move_type: :fighting,
@@ -712,10 +712,10 @@ module Pokeviewer
   Move.create(id: 247, name: "Shadow Ball", pp: 15, move_type: :ghost,
     rs_description: "Hurls a black blob that may lower the foe's SP. DEF.",
     frlg_description: "A shadowy blob is hurled at the foe. May also lower the foe's SP. DEF.")
-  Move.create(id: 246, name: "Ancient Power", pp: 5, move_type: :rock,
+  Move.create(id: 246, name: "AncientPower", pp: 5, move_type: :rock,
     rs_description: "An attack that may raise all stats.",
     frlg_description: "An ancient power is used to attack. It may also raise all the user's stats.")
-  Move.create(id: 245, name: "Extreme Speed", pp: 5, move_type: :normal,
+  Move.create(id: 245, name: "ExtremeSpeed", pp: 5, move_type: :normal,
     rs_description: "An extremely fast and powerful attack.",
     frlg_description: "A blindingly speedy charge attack that always goes before any other.")
   Move.create(id: 244, name: "Psych Up", pp: 10, move_type: :normal,
@@ -775,7 +775,7 @@ module Pokeviewer
   Move.create(id: 226, name: "Baton Pass", pp: 40, move_type: :normal,
     rs_description: "Switches out the user while keeping effects in play.",
     frlg_description: "The user switches out, passing along any stat changes to the new battler.")
-  Move.create(id: 225, name: "Dragon Breath", pp: 20, move_type: :dragon,
+  Move.create(id: 225, name: "DragonBreath", pp: 20, move_type: :dragon,
     rs_description: "Strikes the foe with an incredible blast of breath.",
     frlg_description: "The foe is hit with an incredible blast of breath that may also paralyze.")
   Move.create(id: 224, name: "Megahorn", pp: 10, move_type: :bug,
@@ -897,7 +897,7 @@ module Pokeviewer
   Move.create(id: 186, name: "Sweet Kiss", pp: 10, move_type: :normal,
     rs_description: "Demands a kiss with a cute look. May cause confusion.",
     frlg_description: "The user kisses the foe with sweet cuteness that causes confusion.")
-  Move.create(id: 185, name: "Feint Attack", pp: 20, move_type: :dark,
+  Move.create(id: 185, name: "Faint Attack", pp: 20, move_type: :dark,
     rs_description: "Draws the foe close, then strikes without fail.",
     frlg_description: "The user draws up close to the foe disarmingly, then hits without fail.")
   Move.create(id: 184, name: "Scary Face", pp: 10, move_type: :normal,
@@ -1045,10 +1045,10 @@ module Pokeviewer
   Move.create(id: 137, name: "Glare", pp: 30, move_type: :normal,
     rs_description: "Intimidates and frightens the foe into paralysis.",
     frlg_description: "The user intimidates the foe with the design on its belly to cause paralysis.")
-  Move.create(id: 136, name: "High Jump Kick", pp: 20, move_type: :fighting,
+  Move.create(id: 136, name: "Hi Jump Kick", pp: 20, move_type: :fighting,
     rs_description: "A jumping knee kick. If it misses, the user is hurt.",
     frlg_description: "A strong jumping knee kick. If it misses, the user is hurt.")
-  Move.create(id: 135, name: "Soft-Boiled", pp: 10, move_type: :normal,
+  Move.create(id: 135, name: "Softboiled", pp: 10, move_type: :normal,
     rs_description: "Recovers up to half the user's maximum HP.",
     frlg_description: "Heals the user by up to half its full HP. It can be used to heal an ally.")
   Move.create(id: 134, name: "Kinesis", pp: 15, move_type: :psychic,
@@ -1094,7 +1094,7 @@ module Pokeviewer
   Move.create(id: 121, name: "Egg Bomb", pp: 10, move_type: :normal,
     rs_description: "An egg is forcibly hurled at the foe.",
     frlg_description: "A large egg is hurled with great force at the foe to inflict damage.")
-  Move.create(id: 120, name: "Self-Destruct", pp: 5, move_type: :normal,
+  Move.create(id: 120, name: "Selfdestruct", pp: 5, move_type: :normal,
     rs_description: "Inflicts severe damage but makes the user faint.",
     frlg_description: "The user blows up to inflict severe damage, even making itself faint.")
   Move.create(id: 119, name: "Mirror Move", pp: 20, move_type: :flying,
@@ -1130,7 +1130,7 @@ module Pokeviewer
   Move.create(id: 109, name: "Confuse Ray", pp: 10, move_type: :ghost,
     rs_description: "A sinister ray that confuses the foe.",
     frlg_description: "The foe is exposed to a sinister ray that triggers confusion.")
-  Move.create(id: 108, name: "Smokescreen", pp: 20, move_type: :normal,
+  Move.create(id: 108, name: "SmokeScreen", pp: 20, move_type: :normal,
     rs_description: "Lowers the foe's accuracy using smoke, ink, etc.",
     frlg_description: "An obscuring cloud of smoke or ink reduces the foe's accuracy.")
   Move.create(id: 107, name: "Minimize", pp: 20, move_type: :normal,
@@ -1202,7 +1202,7 @@ module Pokeviewer
   Move.create(id: 85, name: "Thunderbolt", pp: 15, move_type: :electric,
     rs_description: "A strong electrical attack that may paralyze the foe.",
     frlg_description: "A strong electrical attack that may also leave the foe paralyzed.")
-  Move.create(id: 84, name: "Thunder Shock", pp: 30, move_type: :electric,
+  Move.create(id: 84, name: "ThunderShock", pp: 30, move_type: :electric,
     rs_description: "An electrical attack that may paralyze the foe.",
     frlg_description: "An electric shock attack that may also leave the foe paralyzed.")
   Move.create(id: 83, name: "Fire Spin", pp: 15, move_type: :fire,
@@ -1223,10 +1223,10 @@ module Pokeviewer
   Move.create(id: 78, name: "Stun Spore", pp: 30, move_type: :grass,
     rs_description: "Scatters a powder that may paralyze the foe.",
     frlg_description: "Paralyzing dust is scattered wildly. It may paralyze the foe.")
-  Move.create(id: 77, name: "Poison Powder", pp: 35, move_type: :poison,
+  Move.create(id: 77, name: "PoisonPowder", pp: 35, move_type: :poison,
     rs_description: "Scatters a toxic powder that may poison the foe.",
     frlg_description: "A cloud of toxic dust is scattered. It may poison the foe.")
-  Move.create(id: 76, name: "Solar Beam", pp: 10, move_type: :grass,
+  Move.create(id: 76, name: "SolarBeam", pp: 10, move_type: :grass,
     rs_description: "Absorbs light in one turn, then attacks next turn.",
     frlg_description: "A 2-turn move that blasts the foe with absorbed energy in the 2nd turn.")
   Move.create(id: 75, name: "Razor Leaf", pp: 25, move_type: :grass,
@@ -1271,7 +1271,7 @@ module Pokeviewer
   Move.create(id: 62, name: "Aurora Beam", pp: 20, move_type: :ice,
     rs_description: "Fires a rainbow-colored beam that may lower ATTACK.",
     frlg_description: "A rainbow-colored attack beam. It may lower the foe's ATTACK stat.")
-  Move.create(id: 61, name: "Bubble Beam", pp: 20, move_type: :water,
+  Move.create(id: 61, name: "BubbleBeam", pp: 20, move_type: :water,
     rs_description: "Forcefully sprays bubbles that may lower SPEED.",
     frlg_description: "A spray of bubbles strikes the foe. It may lower the foe's SPEED stat.")
   Move.create(id: 60, name: "Psybeam", pp: 20, move_type: :psychic,
@@ -1307,7 +1307,7 @@ module Pokeviewer
   Move.create(id: 50, name: "Disable", pp: 20, move_type: :normal,
     rs_description: "Psychically disables one of the foe's moves.",
     frlg_description: "For a few turns, it prevents the foe from using the move it last used.")
-  Move.create(id: 49, name: "Sonic Boom", pp: 20, move_type: :normal,
+  Move.create(id: 49, name: "SonicBoom", pp: 20, move_type: :normal,
     rs_description: "Launches shock waves that always inflict 20 HP damage.",
     frlg_description: "The foe is hit with a shock wave that always inflicts 20-HP damage.")
   Move.create(id: 48, name: "Supersonic", pp: 20, move_type: :normal,
@@ -1370,7 +1370,7 @@ module Pokeviewer
   Move.create(id: 29, name: "Headbutt", pp: 15, move_type: :normal,
     rs_description: "A ramming attack that may cause flinching.",
     frlg_description: "The user sticks its head out and rams. It may make the foe flinch.")
-  Move.create(id: 28, name: "Sand Attack", pp: 15, move_type: :normal,
+  Move.create(id: 28, name: "Sand-Attack", pp: 15, move_type: :normal,
     rs_description: "Reduces the foe's accuracy by hurling sand in its face.",
     frlg_description: "A lot of sand is hurled in the foe's face, reducing its accuracy.")
   Move.create(id: 27, name: "Rolling Kick", pp: 15, move_type: :fighting,
@@ -1421,13 +1421,13 @@ module Pokeviewer
   Move.create(id: 12, name: "Guillotine", pp: 5, move_type: :normal,
     rs_description: "A powerful pincer attack that may cause fainting.",
     frlg_description: "A vicious tearing attack with pincers. The foe will faint if it hits.")
-  Move.create(id: 11, name: "Vice Grip", pp: 30, move_type: :normal,
+  Move.create(id: 11, name: "ViceGrip", pp: 30, move_type: :normal,
     rs_description: "Grips the foe with large and powerful pincers.",
     frlg_description: "Huge, impressive pincers grip and squeeze the foe.")
   Move.create(id: 10, name: "Scratch", pp: 35, move_type: :normal,
     rs_description: "Scratches the foe with sharp claws.",
     frlg_description: "Hard, pointed, and sharp claws rake the foe.")
-  Move.create(id: 9, name: "Thunder Punch", pp: 15, move_type: :electric,
+  Move.create(id: 9, name: "ThunderPunch", pp: 15, move_type: :electric,
     rs_description: "An electrified punch that may paralyze the foe.",
     frlg_description: "The foe is punched with an electrified fist. It may leave the foe paralyzed.")
   Move.create(id: 8, name: "Ice Punch", pp: 15, move_type: :ice,
@@ -1445,7 +1445,7 @@ module Pokeviewer
   Move.create(id: 4, name: "Comet Punch", pp: 15, move_type: :normal,
     rs_description: "Repeatedly punches the foe 2 to 5 times.",
     frlg_description: "The foe is hit with a flurry of punches that strike two to five times.")
-  Move.create(id: 3, name: "Double Slap", pp: 10, move_type: :normal,
+  Move.create(id: 3, name: "DoubleSlap", pp: 10, move_type: :normal,
     rs_description: "Repeatedly slaps the foe 2 to 5 times.",
     frlg_description: "The foe is slapped repeatedly, back and forth, two to five times.")
   Move.create(id: 2, name: "Karate Chop", pp: 25, move_type: :normal,
