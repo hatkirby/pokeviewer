@@ -200,6 +200,14 @@ module Pokeviewer
       "pokeviewer/items/#{Pokemon.pokeball.values.find_index(pokeball) + 1}.png"
     end
 
+    def ability
+      if second_ability
+        species.ability_2
+      else
+        species.ability_1
+      end
+    end
+
     private
 
       def set_uuid

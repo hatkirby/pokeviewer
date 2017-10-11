@@ -10,10 +10,12 @@ module Pokeviewer
     validates :pp, presence: true,
       numericality: { greater_than_or_equal_to: 1, only_integer: true }
 
-    validates :move_type, presence: true
-    enumerize :move_type, in: [:normal, :fighting, :flying, :poison, :ground,
+    TYPES = [:normal, :fighting, :flying, :poison, :ground,
       :rock, :bug, :ghost, :steel, :mystery, :fire, :water, :grass, :electric,
-      :psychic, :ice, :dragon, :dark], predicates: true
+      :psychic, :ice, :dragon, :dark]
+
+    validates :move_type, presence: true
+    enumerize :move_type, in: TYPES, predicates: true
 
     validates :rs_description, presence: true
     validates :frlg_description, presence: true
