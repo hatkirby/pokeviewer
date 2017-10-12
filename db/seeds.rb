@@ -169,7 +169,7 @@ module Pokeviewer
   Species.create(id: 91, name: "Cloyster", type_1: :water, type_2: :ice, ability_1_id: 75, ability_2_id: 92)
   Species.create(id: 92, name: "Gastly", type_1: :ghost, type_2: :poison, ability_1_id: 26)
   Species.create(id: 93, name: "Haunter", type_1: :ghost, type_2: :poison, ability_1_id: 26)
-  Species.create(id: 94, name: "Gengar", type_1: :ghost, type_2: :poison, ability_1_id: 130)
+  Species.create(id: 94, name: "Gengar", type_1: :ghost, type_2: :poison, ability_1_id: 26)
   Species.create(id: 95, name: "Onix", type_1: :rock, type_2: :ground, ability_1_id: 69, ability_2_id: 5)
   Species.create(id: 96, name: "Drowzee", type_1: :psychic, ability_1_id: 15, ability_2_id: 108)
   Species.create(id: 97, name: "Hypno", type_1: :psychic, ability_1_id: 15, ability_2_id: 108)
