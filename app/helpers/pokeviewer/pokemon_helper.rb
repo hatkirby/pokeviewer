@@ -83,8 +83,93 @@ module Pokeviewer
 
       tag.svg(svg.to_s.html_safe,
         viewBox: "-80 -30 570 430",
-        width: 300,
+        width: "100%",
         class: "pokemon-condition")
+    end
+
+    def image_for_type(type)
+      image_tag "pokeviewer/types/#{type}.gif"
+    end
+
+    def move_details(revision, index)
+      move = revision.send "move_#{index}".intern
+
+      if move
+        move_name = move.name
+        move_type = image_for_type move.move_type
+        move_pp = revision.send "move_#{index}_pp".intern
+        move_pp = "#{move_pp}/#{move_pp}"
+      else
+        move_name = "-"
+        move_type = ""
+        move_pp = "--/--"
+      end
+
+      tag.tr(
+        tag.th(move_type) +
+        tag.td(move_name)) +
+      tag.tr(
+        tag.th("") +
+        tag.td(
+          tag.div(
+            tag.span(
+              "PP",
+              class: 'pp-label') +
+            tag.span(
+              move_pp,
+              class: 'pp-value') +
+            tag.div(
+              "",
+              class: 'clear'),
+            class: 'tb-only')))
+    end
+
+    def display_met(pokemon)
+      met_type = pokemon.met_type
+
+      if met_type == :normal or met_type == :hatched
+        result = "".html_safe
+
+        if met_type == :normal
+          if pokemon.outsider?
+            result << "Apparently met"
+          else
+            result << "Met"
+          end
+        else
+          if pokemon.outsider?
+            result << "Apparently hatched"
+          else
+            result << "Hatched"
+          end
+        end
+
+        result << " in "
+
+        pokemon.location.name.split(" ").each_with_index do |w, i|
+          result << "&nbsp;".html_safe if i > 0
+          result << w
+        end
+
+        result << " at Lv.&nbsp;".html_safe
+
+        if met_type == :hatched
+          result << "5"
+        else
+          result << pokemon.met_level.to_s
+        end
+
+        result << "."
+
+        result
+      elsif met_type == :npc_trade
+        "Met in a trade."
+      elsif met_type == :fateful_encounter
+        "Obtained in a fateful encounter at Lv.&nbsp;".html_safe +
+          pokemon.met_level.to_s
+      elsif met_type == :orre
+        "Met in a trade."
+      end
     end
 
   end

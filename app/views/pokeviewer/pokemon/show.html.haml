@@ -1,86 +1,128 @@
 .pokemon{ class: (not @pokemon.trainer.nil?) && "in-#{@pokemon.trainer.game}" }
   .pokemon-basics
-    .pokemon-species-id= "No. #{@pokemon.species_id}"
-    .pokemon-species-name= @pokemon.species.name
-    .pokemon-image= image_tag @pokemon.sprite_path
-    .pokemon-name= @pokemon.revisions.last.nickname
-    .pokemon-ot
-      OT/
-      %span{ class: @pokemon.ot_gender }>= @pokemon.ot_name
-    .pokemon-id= "ID/#{@pokemon.display_ot_number}"
+    .pokemon-nameline
+      = image_tag(@pokemon.pokeball_icon_path, class: "pokemon-ball")
+      %span.pokemon-name= @pokemon.revisions.last.nickname
+      %span.pokemon-gender N
     .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
-  .pokemon-column
-    .pokemon-stats
-      .pd-details Stats
-      %table.pd-contents
-        %tr
-          %th HP
-          %th
-            Attack
-            - if @pokemon.nature_benefits?(:attack)
-              %span.nature-benefit +
-            - if @pokemon.nature_hinders?(:attack)
-              %span.nature-hinder -
-          %th
-            Defense
-            - if @pokemon.nature_benefits?(:defense)
-              %span.nature-benefit +
-            - if @pokemon.nature_hinders?(:defense)
-              %span.nature-hinder -
-          %th
-            Sp. Atk
-            - if @pokemon.nature_benefits?(:special_attack)
-              %span.nature-benefit +
-            - if @pokemon.nature_hinders?(:special_attack)
-              %span.nature-hinder -
-          %th
-            Sp. Def
-            - if @pokemon.nature_benefits?(:special_defense)
-              %span.nature-benefit +
-            - if @pokemon.nature_hinders?(:special_defense)
-              %span.nature-hinder -
-          %th
-            Speed
-            - if @pokemon.nature_benefits?(:speed)
-              %span.nature-benefit +
-            - if @pokemon.nature_hinders?(:speed)
-              %span.nature-hinder -
-        %tr
-          %td= @pokemon.revisions.last.hp
-          %td= @pokemon.revisions.last.attack
-          %td= @pokemon.revisions.last.defense
-          %td= @pokemon.revisions.last.special_attack
-          %td= @pokemon.revisions.last.special_defense
-          %td= @pokemon.revisions.last.speed
-    .pokemon-row
-      .pokemon-moves
-        .pd-details Moves
-        %ul
-          %li= @pokemon.revisions.last.move_1.name
-          - if @pokemon.revisions.last.move_2
-            %li= @pokemon.revisions.last.move_2.name
-          - else
-            %li -
-          - if @pokemon.revisions.last.move_3
-            %li= @pokemon.revisions.last.move_3.name
-          - else
-            %li -
-          - if @pokemon.revisions.last.move_4
-            %li= @pokemon.revisions.last.move_4.name
-          - else
-            %li -
-      .pokemon-memo
-        .pd-details Trainer Memo
-        .pd-contents
-          %p
-            %span.pokemon-nature<= @pokemon.nature.titlecase
-            nature.
-          %p= @pokemon.display_met
-  .pokemon-contest
-    .pd-details Contest Condition
-    = condition_diagram @pokemon.revisions.last
-  .pokemon-ribbons
-    .pd-details Ribbons
+    .pokemon-image
+      .pokemon-image-wrap= image_tag @pokemon.sprite_path
+    - if @pokemon.revisions.last.item.nil?
+      .pokemon-item-label Item
+      .pokemon-item None
+    - else
+      .pokemon-item-label.with-item Item
+      .pokemon-item.pkv-has-hover
+        = image_tag(@pokemon.revisions.last.item.icon_path)
+        = @pokemon.revisions.last.item.name
+        .pkv-hover
+          .pc-data-name= @pokemon.revisions.last.item.name
+          - if @pokemon.revisions.last.item.tm?
+            .pc-move-name= @pokemon.revisions.last.item.move.name
+          = @pokemon.revisions.last.item.description(@pokemon.trainer.game)
+  .pokemon-tab.pokemon-details
+    %table
+      %tr
+        %th Pokédex No.
+        %td
+          .table-bubble.tb-top= @pokemon.species_id
+      %tr
+        %th Name
+        %td
+          .table-bubble= @pokemon.species.name
+      %tr
+        %th Type
+        %td
+          .table-bubble
+            = image_for_type @pokemon.species.type_1
+            - if @pokemon.species.type_2
+              = image_for_type @pokemon.species.type_2
+      %tr
+        %th OT
+        %td.ot-gender{ class: @pokemon.ot_gender }
+          .table-bubble= @pokemon.ot_name
+      %tr
+        %th ID No.
+        %td
+          .table-bubble.tb-bottom= @pokemon.display_ot_number
+      %tr
+        %th &nbsp;
+        %td
+    .pokemon-met-label Trainer Memo
+    .pokemon-description= display_met @pokemon
+  .pokemon-tab.pokemon-stats
+    %table
+      %tr
+        %th HP
+        %td
+          .table-bubble.tb-top= @pokemon.revisions.last.hp
+      %tr
+        %th
+          Attack
+          - if @pokemon.nature_benefits?(:attack)
+            %span.nature-benefit +
+          - if @pokemon.nature_hinders?(:attack)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @pokemon.revisions.last.attack
+      %tr
+        %th
+          Defense
+          - if @pokemon.nature_benefits?(:defense)
+            %span.nature-benefit +
+          - if @pokemon.nature_hinders?(:defense)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @pokemon.revisions.last.defense
+      %tr
+        %th
+          Sp. Atk
+          - if @pokemon.nature_benefits?(:special_attack)
+            %span.nature-benefit +
+          - if @pokemon.nature_hinders?(:special_attack)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @pokemon.revisions.last.special_attack
+      %tr
+        %th
+          Sp. Def
+          - if @pokemon.nature_benefits?(:special_defense)
+            %span.nature-benefit +
+          - if @pokemon.nature_hinders?(:special_defense)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @pokemon.revisions.last.special_defense
+      %tr
+        %th
+          Speed
+          - if @pokemon.nature_benefits?(:speed)
+            %span.nature-benefit +
+          - if @pokemon.nature_hinders?(:speed)
+            %span.nature-hinder -
+        %td
+          .table-bubble.tb-bottom= @pokemon.revisions.last.speed
+      %tr.pokemon-nature-label
+        %th{ colspan: 2 } Nature
+      %tr
+        %th
+        %td
+          .tb-only= @pokemon.nature_text
+      %tr
+        %th{ colspan: 2 } Ability
+      %tr
+        %th
+        %td
+          .tb-only.pkv-has-hover
+            = @pokemon.ability.name
+            .pkv-hover
+              .pc-data-name= @pokemon.ability.name
+              = @pokemon.ability.description
+  .pokemon-tab.pokemon-moves
+    %table
+      - (1..4).each do |i|
+        = move_details @pokemon.revisions.last, i
+  .pokemon-tab.pokemon-contest= condition_diagram @pokemon.revisions.last
+  .pokemon-tab.pokemon-ribbons
     %ul
       - @pokemon.revisions.last.ribbons.each do |ribbon|
         %li.pkv-has-hover
@@ -88,14 +130,3 @@
           .pkv-hover
             .pc-data-name= ribbon[:name]
             = ribbon[:description]
-  .pokemon-etc
-    .pd-details Misc
-    = image_tag(@pokemon.pokeball_icon_path)
-    - unless @pokemon.revisions.last.item.nil?
-      .pd-hold-item.pkv-has-hover
-        = image_tag(@pokemon.revisions.last.item.icon_path)
-        .pkv-hover
-          .pc-data-name= @pokemon.revisions.last.item.name
-          - if @pokemon.revisions.last.item.tm?
-            .pc-move-name= @pokemon.revisions.last.item.move.name
-          = @pokemon.revisions.last.item.description(@pokemon.trainer.game)

@@ -140,6 +140,22 @@ module Pokeviewer
         less_than_or_equal_to: 4,
         only_integer: true}
 
+    def move_1_pp
+      move_1.pp * (5 + move_1_pp_bonuses) / 5
+    end
+
+    def move_2_pp
+      move_2.pp * (5 + move_2_pp_bonuses) / 5
+    end
+
+    def move_3_pp
+      move_3.pp * (5 + move_3_pp_bonuses) / 5
+    end
+
+    def move_4_pp
+      move_4.pp * (5 + move_4_pp_bonuses) / 5
+    end
+
     def ribbons
       result = []
 

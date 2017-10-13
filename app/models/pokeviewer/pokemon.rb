@@ -142,28 +142,6 @@ module Pokeviewer
       ot_number.to_s.rjust(5, '0')
     end
 
-    def display_met
-      if met_type == :normal
-        if outsider?
-          "Apparently met in #{location.name} at Lv. #{met_level}."
-        else
-          "Met in #{location.name} at Lv. #{met_level}."
-        end
-      elsif met_type == :hatched
-        if outsider?
-          "Apparently hatched in #{location.name} at Lv. 5."
-        else
-          "Hatched in #{location.name} at Lv. 5."
-        end
-      elsif met_type == :npc_trade
-        "Met in a trade."
-      elsif met_type == :fateful_encounter
-        "Obtained in a fateful encounter at Lv. #{met_level}."
-      elsif met_type == :orre
-        "Met in a trade."
-      end
-    end
-
     def nature_benefits?(stat)
       if stat == :attack
         [:lonely, :brave, :adamant, :naughty].include? nature.intern
