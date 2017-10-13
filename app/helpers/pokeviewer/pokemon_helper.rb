@@ -81,8 +81,40 @@ module Pokeviewer
         points: points.map { |point| point * "," } * " ",
         class: "pkcv-data")
 
+      svg.rect(
+        x: -40,
+        y: 460,
+        rx: 10,
+        ry: 10,
+        width: 490,
+        height: 60,
+        class: "pkcv-sheen-bg")
+
+      if revision.sheen > 0
+        svg.rect(
+          x: -37,
+          y: 460,
+          width: revision.sheen * 490 / 10 - 6,
+          height: 60,
+          class: "pkcv-sheen-data")
+      end
+
+      svg.rect(
+        x: -40,
+        y: 460,
+        rx: 10,
+        ry: 10,
+        width: 490,
+        height: 60,
+        class: "pkcv-sheen-border")
+
+      svg.text("SHEEN",
+        x: -20,
+        y: 500,
+        class: "pkcv-sheen-label")
+
       tag.svg(svg.to_s.html_safe,
-        viewBox: "-80 -30 570 430",
+        viewBox: "-80 -30 570 560",
         width: "100%",
         class: "pokemon-condition")
     end

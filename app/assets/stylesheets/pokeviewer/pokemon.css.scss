@@ -505,6 +505,27 @@
         stroke-width: 6;
         stroke-linejoin: butt;
       }
+
+      .pkcv-sheen-bg {
+        fill: #706860;
+      }
+
+      .pkcv-sheen-data {
+        fill: #a048c8;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+
+      .pkcv-sheen-border {
+        fill-opacity: 0;
+        stroke-width: 5;
+        stroke: gray;
+      }
+
+      .pkcv-sheen-label {
+        fill: white;
+        font-size: 40px;
+      }
     }
   }
 }
