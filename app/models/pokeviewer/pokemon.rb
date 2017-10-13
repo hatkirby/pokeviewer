@@ -186,6 +186,14 @@ module Pokeviewer
       end
     end
 
+    def gift_ribbon_description(ribbon)
+      if trainer.nil?
+        ""
+      else
+        trainer.gift_ribbon_description(ribbon)
+      end
+    end
+
     private
 
       def set_uuid
