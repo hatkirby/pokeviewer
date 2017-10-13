@@ -191,7 +191,7 @@
 
   &.in-emerald {
     .pokemon-image {
-      img {
+      .pokemon-sprite {
         margin: -14px;
       }
     }
@@ -249,6 +249,13 @@
         border-radius: 10px;
         display: inline-block;
         padding: 4px;
+        position: relative;
+
+        .pkv-shiny-star {
+          position: absolute;
+          top: 0;
+          right: -1.5em;
+        }
       }
     }
 

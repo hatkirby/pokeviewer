@@ -22,7 +22,8 @@ module Pokeviewer
           pokeviewer/boxes/*.png
           pokeviewer/ribbons/*.png
           pokeviewer/items/*.png
-          pokeviewer/items/**/*.png)
+          pokeviewer/items/**/*.png
+          pokeviewer/*.png)
     end
   end
 end
