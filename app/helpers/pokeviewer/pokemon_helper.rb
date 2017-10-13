@@ -197,7 +197,7 @@ module Pokeviewer
       elsif met_type == :npc_trade
         "Met in a trade."
       elsif met_type == :fateful_encounter
-        "Obtained in a fateful encounter at Lv.&nbsp;".html_safe +
+        "Met in a fateful encounter at Lv.&nbsp;".html_safe +
           pokemon.met_level.to_s
       elsif met_type == :orre
         "Met in a trade."
