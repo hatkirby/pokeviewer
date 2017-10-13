@@ -194,6 +194,17 @@ module Pokeviewer
       end
     end
 
+    def gender_symbol
+      case gender.intern
+      when :female
+        "♀"
+      when :male
+        "♂"
+      when :genderless
+        ""
+      end
+    end
+
     private
 
       def set_uuid

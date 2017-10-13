@@ -174,12 +174,14 @@
   border: 1px solid #888;
   overflow: hidden;
 
-  .male {
-    color: blue;
-  }
+  .ot-gender {
+    &.male {
+      color: blue;
+    }
 
-  .female {
-    color: red;
+    &.female {
+      color: red;
+    }
   }
 
   .pokemon-name {
@@ -219,6 +221,14 @@
 
     .pokemon-gender {
       float: right;
+
+      &.female {
+        color: #ff6363;
+      }
+
+      &.male {
+        color: #00a2ff;
+      }
     }
 
     .pokemon-level {

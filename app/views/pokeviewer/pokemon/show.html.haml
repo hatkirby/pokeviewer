@@ -3,7 +3,7 @@
     .pokemon-nameline
       = image_tag(@pokemon.pokeball_icon_path, class: "pokemon-ball")
       %span.pokemon-name= @pokemon.revisions.last.nickname
-      %span.pokemon-gender N
+      %span.pokemon-gender{ class: @pokemon.gender }= @pokemon.gender_symbol
     .pokemon-level= "Lv. #{@pokemon.revisions.last.level}"
     .pokemon-image
       .pokemon-image-wrap= image_tag @pokemon.sprite_path
