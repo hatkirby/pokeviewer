@@ -21,7 +21,7 @@ module Pokeviewer
           end
         end
 
-      if pokemon.peek.first == -1
+      if pokemon.peek and pokemon.peek.first == -1
         @unaccounted = pokemon.next.second
       else
         @unaccounted = []
