@@ -21,10 +21,14 @@ module Pokeviewer
           end
         end
 
-      if pokemon.peek and pokemon.peek.first == -1
-        @unaccounted = pokemon.next.second
-      else
-        @unaccounted = []
+      @unaccounted = []
+
+      begin
+        if pokemon.peek.first == -1
+          @unaccounted = pokemon.next.second
+        end
+      rescue StopIteration
+        # There are no Pokémon, but that's fine.
       end
 
       @trainers = Trainer.order(id: :asc).all.map do |trainer|
