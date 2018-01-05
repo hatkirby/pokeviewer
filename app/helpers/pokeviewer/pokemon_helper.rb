@@ -120,7 +120,7 @@ module Pokeviewer
     end
 
     def image_for_type(type)
-      image_tag "pokeviewer/types/#{type}.gif"
+      image_tag "pokeviewer/types/#{type}.gif", class: "pkv-type"
     end
 
     def move_details(revision, index)
