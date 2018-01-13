@@ -4,6 +4,7 @@ module Pokeviewer
     extend ActiveModel::Naming
 
     has_many :revisions, -> { order "sequential_id ASC" }, dependent: :destroy
+    has_one :current, -> { order "sequential_id DESC" }, class_name: "Revision"
 
     belongs_to :trainer, optional: true
 
@@ -74,10 +75,6 @@ module Pokeviewer
 
     def to_param
       uuid
-    end
-
-    def current
-      revisions.last
     end
 
     def outsider?

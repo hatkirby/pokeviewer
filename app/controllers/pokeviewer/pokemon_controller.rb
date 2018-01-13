@@ -3,14 +3,13 @@ require_dependency "pokeviewer/application_controller"
 module Pokeviewer
   class PokemonController < ApplicationController
     def index
-      pokemon = Pokemon.joins(:revisions).
+      pokemon = Pokemon.joins(:current).
         order("trainer_id IS NULL DESC").
         order(trainer_id: :asc).
         order(box: :asc).
         order(slot: :asc).
-        order("pokeviewer_revisions.sequential_id DESC").
         group("pokeviewer_pokemon.uuid").
-        includes(:revisions).
+        includes(:current).
         chunk do |p|
           if p.trainer_id.nil?
             -1
@@ -70,7 +69,7 @@ module Pokeviewer
     def show
       @pokemon = Pokemon.includes(
           :trainer, :location,
-          revisions: [:species, :item, :move_1, :move_2, :move_3, :move_4]
+          current: [:species, :item, :move_1, :move_2, :move_3, :move_4]
         ).find_by_uuid! params[:id]
     end
   end

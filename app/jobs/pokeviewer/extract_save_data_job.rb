@@ -169,7 +169,7 @@ module Pokeviewer
         rev.earth_ribbon = param.fetch "earthRibbon", false
         rev.world_ribbon = param.fetch "worldRibbon", false
 
-        if pk.revisions.empty? or rev.diff?(pk.revisions.last)
+        if pk.revisions.empty? or rev.diff?(pk.current)
           rev.save!
         end
       end
