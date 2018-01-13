@@ -39,11 +39,11 @@ module Pokeviewer
     validates :box_14_name, presence: true
 
     def party
-      pokemon.party.includes(:species, :revisions)
+      pokemon.party.includes(revisions: [:species])
     end
 
     def box(n)
-      pokemon.box(n).includes(:species, :revisions)
+      pokemon.box(n).includes(revisions: [:species])
     end
 
     def box_name(n)

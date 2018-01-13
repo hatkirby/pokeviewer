@@ -71,7 +71,6 @@ module Pokeviewer
 
       args["pokemon"].each do |param|
         pk = Pokemon.find_or_create_by!(key: param["key"]) do |r|
-          r.species_id = param["species"]
           r.ot_name = param["otName"]
           r.ot_number = param["otId"]
           r.ot_gender = param["otGender"]
@@ -99,7 +98,7 @@ module Pokeviewer
           r.pokeball = Pokemon.pokeball.values[param["pokeball"] - 1]
 
           # Handle Unown form
-          if r.species_id == 201
+          if param["species"] == 201
             r.unown_letter = Pokemon.unown_letter.values[param["unownLetter"]]
           end
         end
@@ -117,6 +116,7 @@ module Pokeviewer
         pk.save!
 
         rev = Revision.new(pokemon: pk)
+        rev.species_id = param["species"]
         rev.nickname = param["nickname"]
         rev.experience = param["experience"]
         rev.level = param["level"]

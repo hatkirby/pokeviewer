@@ -3,8 +3,6 @@ module Pokeviewer
     extend Enumerize
     extend ActiveModel::Naming
 
-    belongs_to :species
-
     has_many :revisions, -> { order "sequential_id ASC" }, dependent: :destroy
 
     belongs_to :trainer, optional: true
@@ -78,60 +76,8 @@ module Pokeviewer
       uuid
     end
 
-    def icon_path
-      form = ""
-      if species_id == 201
-        # Handle Unown form
-        form = "-#{unown_letter}"
-      elsif species_id == 386
-        # Handle Deoxys forms
-        if trainer.firered?
-          form = "-attack"
-        elsif trainer.leafgreen?
-          form = "-defense"
-        elsif trainer.emerald?
-          form = "-speed"
-        end
-      end
-
-      "pokeviewer/icons/#{species_id}#{form}.png"
-    end
-
-    def sprite_path
-      shininess = "normal"
-      if shiny
-        shininess = "shiny"
-      end
-
-      game = "ruby-sapphire"
-      unless trainer.nil?
-        if (trainer.firered? or trainer.leafgreen?) and (species_id <= 156 or species_id == 216 or species_id == 386)
-          game = "firered-leafgreen"
-        elsif trainer.emerald?
-          game = "emerald"
-        end
-      end
-
-      form = ""
-      if species_id == 201
-        # Handle Unown forms
-        form = "-#{unown_letter}"
-      elsif species_id == 386
-        # Handle Deoxys forms
-        if trainer.firered?
-          form = "-attack"
-        elsif trainer.leafgreen?
-          form = "-defense"
-        elsif trainer.emerald?
-          form = "-speed"
-        end
-      end
-
-      if game == "emerald"
-        "pokeviewer/sprites/emerald/#{shininess}/#{species_id}#{form}.gif"
-      else
-        "pokeviewer/sprites/#{game}/#{shininess}/#{species_id}#{form}.png"
-      end
+    def current
+      revisions.last
     end
 
     def outsider?
@@ -176,14 +122,6 @@ module Pokeviewer
 
     def pokeball_icon_path
       "pokeviewer/items/#{Pokemon.pokeball.values.find_index(pokeball) + 1}.png"
-    end
-
-    def ability
-      if second_ability
-        species.ability_2
-      else
-        species.ability_1
-      end
     end
 
     def gift_ribbon_description(ribbon)

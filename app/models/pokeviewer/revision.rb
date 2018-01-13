@@ -4,7 +4,7 @@ module Pokeviewer
   class Revision < ApplicationRecord
     include ActiveRecord::Diff
 
-    diff :nickname, :level, :hp, :attack, :defense,
+    diff :species_id, :nickname, :level, :hp, :attack, :defense,
       :special_attack, :special_defense, :speed, :coolness, :beauty, :cuteness,
       :smartness, :toughness, :sheen, :item_id, :move_1_id, :move_2_id,
       :move_3_id, :move_4_id, :move_1_pp_bonuses, :move_2_pp_bonuses,
@@ -16,6 +16,8 @@ module Pokeviewer
 
     belongs_to :pokemon
     acts_as_sequenced scope: :pokemon_id
+
+    belongs_to :species
 
     validates :nickname, presence: true
 
@@ -139,6 +141,70 @@ module Pokeviewer
         greater_than_or_equal_to: 0,
         less_than_or_equal_to: 4,
         only_integer: true}
+
+    def icon_path
+      form = ""
+      if species_id == 201
+        # Handle Unown form
+        form = "-#{pokemon.unown_letter}"
+      elsif species_id == 386
+        # Handle Deoxys forms
+        if pokemon.trainer.firered?
+          form = "-attack"
+        elsif pokemon.trainer.leafgreen?
+          form = "-defense"
+        elsif pokemon.trainer.emerald?
+          form = "-speed"
+        end
+      end
+
+      "pokeviewer/icons/#{species_id}#{form}.png"
+    end
+
+    def sprite_path
+      shininess = "normal"
+      if pokemon.shiny
+        shininess = "shiny"
+      end
+
+      game = "ruby-sapphire"
+      unless pokemon.trainer.nil?
+        if (pokemon.trainer.firered? or pokemon.trainer.leafgreen?) and (species_id <= 156 or species_id == 216 or species_id == 386)
+          game = "firered-leafgreen"
+        elsif pokemon.trainer.emerald?
+          game = "emerald"
+        end
+      end
+
+      form = ""
+      if species_id == 201
+        # Handle Unown forms
+        form = "-#{pokemon.unown_letter}"
+      elsif species_id == 386
+        # Handle Deoxys forms
+        if pokemon.trainer.firered?
+          form = "-attack"
+        elsif pokemon.trainer.leafgreen?
+          form = "-defense"
+        elsif pokemon.trainer.emerald?
+          form = "-speed"
+        end
+      end
+
+      if game == "emerald"
+        "pokeviewer/sprites/emerald/#{shininess}/#{species_id}#{form}.gif"
+      else
+        "pokeviewer/sprites/#{game}/#{shininess}/#{species_id}#{form}.png"
+      end
+    end
+
+    def ability
+      if pokemon.second_ability
+        species.ability_2
+      else
+        species.ability_1
+      end
+    end
 
     def move_1_pp
       move_1.pp * (5 + move_1_pp_bonuses) / 5

@@ -2,7 +2,7 @@ module Pokeviewer
   class Species < ApplicationRecord
     extend Enumerize
 
-    has_many :pokemon, dependent: :restrict_with_exception
+    has_many :revisions, dependent: :restrict_with_exception
 
     validates :name, presence: true, uniqueness: true
 

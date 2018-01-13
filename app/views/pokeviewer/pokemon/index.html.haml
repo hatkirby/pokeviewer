@@ -8,8 +8,8 @@
         %h3 Party
         - party.each do |p|
           %li
-            %span.party-icon= image_tag p.icon_path
-            %span.party-name= link_to p.nickname, p
+            %span.party-icon= image_tag p.current.icon_path
+            %span.party-name= link_to p.current.nickname, p
       - boxes.each do |box|
         .pc-box
           %h3= box[:name]
@@ -21,9 +21,9 @@
                     - if p.nil?
                       .spacer
                     - else
-                      = link_to image_tag(p.icon_path), p
+                      = link_to image_tag(p.current.icon_path), p
                       .pc-data.pkv-hover
-                        .pc-data-name= p.nickname
+                        .pc-data-name= p.current.nickname
                         .pc-data-ot
                           OT/
                           %span{ class: p.ot_gender }>= p.ot_name
@@ -34,9 +34,9 @@
     %ul.pokemon-list
       - @unaccounted.each do |p|
         %li.pc-pokemon.pkv-has-hover
-          = link_to image_tag(p.icon_path), p
+          = link_to image_tag(p.current.icon_path), p
           .pc-data.pkv-hover
-            .pc-data-name= p.nickname
+            .pc-data-name= p.current.nickname
             .pc-data-ot
               OT/
               %span{ class: p.ot_gender }>= p.ot_name

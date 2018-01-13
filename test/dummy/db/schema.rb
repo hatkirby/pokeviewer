@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011015648) do
+ActiveRecord::Schema.define(version: 20180113200119) do
 
   create_table "pokeviewer_abilities", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20171011015648) do
 
   create_table "pokeviewer_pokemon", force: :cascade do |t|
     t.string "uuid", limit: 191, null: false
-    t.integer "species_id", null: false
     t.integer "trainer_id"
     t.string "key", limit: 191
     t.string "ot_name", null: false
@@ -78,7 +77,6 @@ ActiveRecord::Schema.define(version: 20171011015648) do
     t.integer "location_id"
     t.string "pokeball", null: false
     t.index ["key"], name: "index_pokeviewer_pokemon_on_key", unique: true
-    t.index ["species_id"], name: "index_pokeviewer_pokemon_on_species_id"
     t.index ["trainer_id"], name: "index_pokeviewer_pokemon_on_trainer_id"
     t.index ["uuid"], name: "index_pokeviewer_pokemon_on_uuid", unique: true
   end
@@ -129,12 +127,14 @@ ActiveRecord::Schema.define(version: 20171011015648) do
     t.boolean "national_ribbon", default: false
     t.boolean "earth_ribbon", default: false
     t.boolean "world_ribbon", default: false
+    t.integer "species_id", null: false
     t.index ["move_1_id"], name: "index_pokeviewer_revisions_on_move_1_id"
     t.index ["move_2_id"], name: "index_pokeviewer_revisions_on_move_2_id"
     t.index ["move_3_id"], name: "index_pokeviewer_revisions_on_move_3_id"
     t.index ["move_4_id"], name: "index_pokeviewer_revisions_on_move_4_id"
     t.index ["pokemon_id", "sequential_id"], name: "index_pokeviewer_revisions_on_pokemon_id_and_sequential_id", unique: true
     t.index ["pokemon_id"], name: "index_pokeviewer_revisions_on_pokemon_id"
+    t.index ["species_id"], name: "index_pokeviewer_revisions_on_species_id"
   end
 
   create_table "pokeviewer_species", force: :cascade do |t|

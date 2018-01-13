@@ -10,9 +10,7 @@ module Pokeviewer
         order(slot: :asc).
         order("pokeviewer_revisions.sequential_id DESC").
         group("pokeviewer_pokemon.uuid").
-        select(:box, :slot, :uuid, :trainer_id, :species_id).
-        select(:ot_gender, :ot_name, :unown_letter).
-        select("pokeviewer_revisions.nickname AS nickname").
+        includes(:revisions).
         chunk do |p|
           if p.trainer_id.nil?
             -1
@@ -71,8 +69,8 @@ module Pokeviewer
 
     def show
       @pokemon = Pokemon.includes(
-          :trainer, :species, :location,
-          revisions: [:item, :move_1, :move_2, :move_3, :move_4]
+          :trainer, :location,
+          revisions: [:species, :item, :move_1, :move_2, :move_3, :move_4]
         ).find_by_uuid! params[:id]
     end
   end
