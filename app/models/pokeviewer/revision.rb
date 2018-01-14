@@ -17,6 +17,8 @@ module Pokeviewer
     belongs_to :pokemon
     acts_as_sequenced scope: :pokemon_id
 
+    after_create :cache_pokemon_current
+
     belongs_to :species
 
     validates :nickname, presence: true
@@ -483,5 +485,12 @@ module Pokeviewer
 
       result
     end
+
+    private
+
+      def cache_pokemon_current
+        self.pokemon.current_id = self.id
+        self.pokemon.save!
+      end
   end
 end

@@ -7,8 +7,7 @@ module Pokeviewer
         order(trainer_id: :asc).
         order(box: :asc).
         order(slot: :asc).
-        select(:uuid).distinct.
-        order("pokeviewer_revisions.sequential_id DESC").
+        joins(:current).
         includes(:current).
         chunk do |p|
           if p.trainer_id.nil?

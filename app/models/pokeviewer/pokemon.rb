@@ -4,7 +4,9 @@ module Pokeviewer
     extend ActiveModel::Naming
 
     has_many :revisions, -> { order "sequential_id ASC" }, dependent: :destroy
-    has_one :current, -> { order "sequential_id DESC" }, class_name: "Revision"
+
+    belongs_to :current, class_name: "Revision", optional: true
+    validate :current_is_cached
 
     belongs_to :trainer, optional: true
 
@@ -148,6 +150,18 @@ module Pokeviewer
 
       def uuid_is_constant
         errors.add(:uuid, "can't be changed") if self.uuid_changed?
+      end
+
+      def current_is_cached
+        if self.revisions.empty?
+          unless self.current_id.nil?
+            errors.add(:current, "must be null when there are no revisions")
+          end
+        else
+          unless self.current_id = self.revisions.last.id
+            errors.add(:current, "is not up-to-date")
+          end
+        end
       end
   end
 end
