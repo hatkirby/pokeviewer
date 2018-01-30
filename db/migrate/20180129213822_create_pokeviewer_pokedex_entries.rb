@@ -8,7 +8,7 @@ class CreatePokeviewerPokedexEntries < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_foreign_key :pokeviewer_pokedex_entries, :pokeviewer_trainer,
+    add_foreign_key :pokeviewer_pokedex_entries, :pokeviewer_trainers,
       column: :trainer_id
 
     add_foreign_key :pokeviewer_pokedex_entries, :pokeviewer_species,
