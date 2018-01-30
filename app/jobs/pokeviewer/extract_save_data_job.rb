@@ -173,6 +173,16 @@ module Pokeviewer
           rev.save!
         end
       end
+
+      game.pokedex_entries.clear
+
+      args["seen"].each do |param|
+        game.pokedex_entries.create(species_id: param, caught: false)
+      end
+
+      args["caught"].each do |param|
+        game.pokedex_entries.create(species_id: param, caught: true)
+      end
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180114170238) do
+ActiveRecord::Schema.define(version: 20180129213822) do
 
   create_table "pokeviewer_abilities", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 20180114170238) do
     t.string "frlg_description", null: false
     t.string "emerald_description"
     t.index ["name"], name: "index_pokeviewer_moves_on_name", unique: true
+  end
+
+  create_table "pokeviewer_pokedex_entries", force: :cascade do |t|
+    t.integer "trainer_id"
+    t.integer "species_id"
+    t.boolean "caught", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["species_id"], name: "index_pokeviewer_pokedex_entries_on_species_id"
+    t.index ["trainer_id", "species_id"], name: "index_pokeviewer_pokedex_entries_on_trainer_id_and_species_id", unique: true
+    t.index ["trainer_id"], name: "index_pokeviewer_pokedex_entries_on_trainer_id"
   end
 
   create_table "pokeviewer_pokemon", force: :cascade do |t|

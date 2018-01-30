@@ -1,0 +1,85 @@
+// Place all the styles related to the Pokedex controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pkvd-table {
+  border-spacing: 5px;
+
+  th {
+    text-align: right;
+    font-family: 'Power Green';
+    font-weight: normal;
+    padding-right: 0.5em;
+
+    img {
+      image-rendering: pixelated;
+    }
+  }
+
+  td {
+    padding: 0 0.5em;
+    text-align: center;
+    font-family: 'Power Green';
+
+    &.pkvd-unseen {
+      border: 1px dashed gray;
+      color: gray;
+    }
+
+    &.pkvd-seen {
+      border-width: 3px;
+      border-style: solid;
+      font-weight: bold;
+
+      &.ruby {
+        border-color: #D67873;
+        color: #D67873;
+      }
+
+      &.sapphire {
+        border-color: #445E9C;
+        color: #445E9C;
+      }
+
+      &.firered {
+        border-color: #F5AC78;
+        color: #F5AC78;
+      }
+
+      &.leafgreen {
+        border-color: #A7DB8D;
+        color: #A7DB8D;
+      }
+
+      &.emerald {
+        border-color: #4E8234;
+        color: #4E8234;
+      }
+    }
+
+    &.pkvd-caught {
+      color: black;
+      font-weight: bold;
+
+      &.ruby {
+        background-color: #D67873;
+      }
+
+      &.sapphire {
+        background-color: #445E9C;
+      }
+
+      &.firered {
+        background-color: #F5AC78;
+      }
+
+      &.leafgreen {
+        background-color: #A7DB8D;
+      }
+
+      &.emerald {
+        background-color: #4E8234;
+      }
+    }
+  }
+}

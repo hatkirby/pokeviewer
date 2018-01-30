@@ -4,4 +4,6 @@ Pokeviewer::Engine.routes.draw do
 
   resources :pokemon, only: [:show]
 
+  resources :pokedex, only: [:index]
+
 end

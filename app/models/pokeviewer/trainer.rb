@@ -4,6 +4,8 @@ module Pokeviewer
 
     has_many :pokemon, dependent: :nullify
 
+    has_many :pokedex_entries, dependent: :destroy
+
     validates :number, presence: true,
       numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
