@@ -171,7 +171,7 @@ module Pokeviewer
 
       game = "ruby-sapphire"
       unless pokemon.trainer.nil?
-        if (pokemon.trainer.firered? or pokemon.trainer.leafgreen?) and (species_id <= 156 or species_id == 216 or species_id == 386)
+        if (pokemon.trainer.firered? or pokemon.trainer.leafgreen?) and (species_id <= 151 or species_id == 216 or species_id == 386)
           game = "firered-leafgreen"
         elsif pokemon.trainer.emerald?
           game = "emerald"
