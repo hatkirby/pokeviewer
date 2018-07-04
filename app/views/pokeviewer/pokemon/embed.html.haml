@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title Pokeviewer
+    = stylesheet_link_tag "pokeviewer/application", media: "all"
+    = javascript_include_tag "pokeviewer/application"
+    = csrf_meta_tags
+  %body#pokemon-embed
+    %ul#pokemon-embed-tabs
+      %li.ptabe-button.ptabe-details= link_to "Details", "\#", data: {tab: "details"}
+      %li.ptabe-button.ptabe-stats= link_to "Stats", "\#", data: {tab: "stats"}
+      %li.ptabe-button.ptabe-moves= link_to "Moves", "\#", data: {tab: "moves"}
+      %li.ptabe-button.ptabe-contest= link_to "Contest", "\#", data: {tab: "contest"}
+      %li.ptabe-button.ptabe-ribbons= link_to "Ribbons", "\#", data: {tab: "ribbons"}
+    = render @pokemon

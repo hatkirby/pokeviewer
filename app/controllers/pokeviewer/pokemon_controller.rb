@@ -2,6 +2,8 @@ require_dependency "pokeviewer/application_controller"
 
 module Pokeviewer
   class PokemonController < ApplicationController
+    before_action :load_pokemon, only: [:show, :embed]
+
     def index
       pokemon = Pokemon.order("trainer_id IS NULL DESC").
         order(trainer_id: :asc).
@@ -66,10 +68,18 @@ module Pokeviewer
     end
 
     def show
-      @pokemon = Pokemon.includes(
-          :trainer, :location,
-          current: [:species, :item, :move_1, :move_2, :move_3, :move_4]
-        ).find_by_uuid! params[:id]
     end
+
+    def embed
+      render layout: false
+    end
+
+    protected
+      def load_pokemon
+        @pokemon = Pokemon.includes(
+            :trainer, :location,
+            current: [:species, :item, :move_1, :move_2, :move_3, :move_4]
+          ).find_by_uuid! params[:id]
+      end
   end
 end
