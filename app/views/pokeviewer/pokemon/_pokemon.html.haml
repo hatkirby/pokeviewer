@@ -2,7 +2,7 @@
   .pokemon-basics
     .pokemon-nameline
       = image_tag(@pokemon.pokeball_icon_path, class: "pokemon-ball")
-      %span.pokemon-name= link_to_unless_current @pokemon.current.nickname, @pokemon
+      %span.pokemon-name= link_to_unless_current @pokemon.current.nickname, @pokemon, target: "_blank"
       %span.pokemon-gender{ class: @pokemon.gender }= @pokemon.gender_symbol
     .pokemon-level= "Lv. #{@pokemon.current.level}"
     .pokemon-image
