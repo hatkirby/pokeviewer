@@ -1,7 +1,7 @@
 require "enumerize"
 require "sequenced"
 require "haml"
-require "sass-rails"
+require "sassc-rails"
 require "normalize-rails"
 require "jquery-rails"
 
