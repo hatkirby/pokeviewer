@@ -70,6 +70,21 @@ module Pokeviewer
     def show
     end
 
+    def show_revision
+      @revision = Revision.
+        where(
+          sequential_id: params[:revision_id],
+          pokeviewer_pokemon: { uuid: params[:id] }
+        ).includes(
+          :species, :item, :move_1, :move_2, :move_3, :move_4,
+          pokemon: [:trainer, :location]
+        ).first
+
+      @pokemon = @revision.pokemon
+
+      render :show
+    end
+
     def embed
       render layout: false
     end
@@ -77,9 +92,12 @@ module Pokeviewer
     protected
       def load_pokemon
         @pokemon = Pokemon.includes(
-            :trainer, :location,
-            current: [:species, :item, :move_1, :move_2, :move_3, :move_4]
+            current: [
+              :species, :item, :move_1, :move_2, :move_3, :move_4,
+              pokemon: [:trainer, :location]]
           ).find_by_uuid! params[:id]
+
+        @revision = @pokemon.current
       end
   end
 end

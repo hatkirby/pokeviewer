@@ -5,6 +5,7 @@ Pokeviewer::Engine.routes.draw do
   resources :pokemon, only: [:show] do
     member do
       get 'embed'
+      get 'revisions/:revision_id', action: :show_revision, as: :show_revision
     end
   end
 

@@ -1,0 +1,135 @@
+.pokemon{ class: (not @revision.pokemon.trainer.nil?) && "in-#{@revision.pokemon.trainer.game}" }
+  .pokemon-basics
+    .pokemon-nameline
+      = image_tag(@revision.pokemon.pokeball_icon_path, class: "pokemon-ball")
+      %span.pokemon-name= link_to_unless_current @revision.nickname, @revision.pokemon, target: "_blank"
+      %span.pokemon-gender{ class: @revision.pokemon.gender }= @revision.pokemon.gender_symbol
+    .pokemon-level= "Lv. #{@revision.level}"
+    .pokemon-image
+      .pokemon-image-wrap
+        = image_tag @revision.sprite_path, class: "pokemon-sprite"
+        - if @revision.pokemon.shiny?
+          = image_tag "pokeviewer/ShinyIVStar.png", class: "pkv-shiny-star"
+    - if @revision.item.nil?
+      .pokemon-item-label Item
+      .pokemon-item None
+    - else
+      .pokemon-item-label.with-item Item
+      .pokemon-item.pkv-has-hover
+        = image_tag(@revision.item.icon_path)
+        = @revision.item.name
+        .pkv-hover
+          .pc-data-name= @revision.item.name
+          - if @revision.item.tm?
+            .pc-move-name= @revision.item.move.name
+          = @revision.item.description(@revision.pokemon.trainer.game)
+  .pokemon-tab.pokemon-details
+    %table
+      %tr
+        %th Pokédex No.
+        %td
+          .table-bubble.tb-top= @revision.species_id
+      %tr
+        %th Name
+        %td
+          .table-bubble= @revision.species.name
+      %tr
+        %th Type
+        %td
+          .table-bubble
+            = image_for_type @revision.species.type_1
+            - if @revision.species.type_2
+              = image_for_type @revision.species.type_2
+      %tr
+        %th OT
+        %td.ot-gender{ class: @revision.pokemon.ot_gender }
+          .table-bubble= @revision.pokemon.ot_name
+      %tr
+        %th ID No.
+        %td
+          .table-bubble.tb-bottom= @revision.pokemon.display_ot_number
+      %tr
+        %th &nbsp;
+        %td
+    .pokemon-met-label Trainer Memo
+    .pokemon-description= display_met @revision.pokemon
+  .pokemon-tab.pokemon-stats
+    %table
+      %tr
+        %th HP
+        %td
+          .table-bubble.tb-top= @revision.hp
+      %tr
+        %th
+          Attack
+          - if @revision.pokemon.nature_benefits?(:attack)
+            %span.nature-benefit +
+          - if @revision.pokemon.nature_hinders?(:attack)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @revision.attack
+      %tr
+        %th
+          Defense
+          - if @revision.pokemon.nature_benefits?(:defense)
+            %span.nature-benefit +
+          - if @revision.pokemon.nature_hinders?(:defense)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @revision.defense
+      %tr
+        %th
+          Sp. Atk
+          - if @revision.pokemon.nature_benefits?(:special_attack)
+            %span.nature-benefit +
+          - if @revision.pokemon.nature_hinders?(:special_attack)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @revision.special_attack
+      %tr
+        %th
+          Sp. Def
+          - if @revision.pokemon.nature_benefits?(:special_defense)
+            %span.nature-benefit +
+          - if @revision.pokemon.nature_hinders?(:special_defense)
+            %span.nature-hinder -
+        %td
+          .table-bubble= @revision.special_defense
+      %tr
+        %th
+          Speed
+          - if @revision.pokemon.nature_benefits?(:speed)
+            %span.nature-benefit +
+          - if @revision.pokemon.nature_hinders?(:speed)
+            %span.nature-hinder -
+        %td
+          .table-bubble.tb-bottom= @revision.speed
+      %tr.pokemon-nature-label
+        %th{ colspan: 2 } Nature
+      %tr
+        %th
+        %td
+          .tb-only= @revision.pokemon.nature_text
+      %tr
+        %th{ colspan: 2 } Ability
+      %tr
+        %th
+        %td
+          .tb-only.pkv-has-hover
+            = @revision.ability.name
+            .pkv-hover
+              .pc-data-name= @revision.ability.name
+              = @revision.ability.description
+  .pokemon-tab.pokemon-moves
+    %table
+      - (1..4).each do |i|
+        = move_details @revision, i
+  .pokemon-tab.pokemon-contest= condition_diagram @revision
+  .pokemon-tab.pokemon-ribbons
+    %ul
+      - @revision.ribbons.each do |ribbon|
+        %li.pkv-has-hover
+          = image_tag("pokeviewer/ribbons/#{ribbon[:filename]}")
+          .pkv-hover
+            .pc-data-name= ribbon[:name]
+            = ribbon[:description]
