@@ -5,7 +5,7 @@ module Pokeviewer
     before_action :load_pokemon, only: [:show, :embed]
 
     def index
-      pokemon = Pokemon.order("trainer_id IS NULL DESC").
+      pokemon = Pokemon.order(Arel.sql("trainer_id IS NULL DESC")).
         order(trainer_id: :asc).
         order(box: :asc).
         order(slot: :asc).
