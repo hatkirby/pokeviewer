@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 7.0.3"
+  s.add_dependency "rails", "~> 7.1.0"
   s.add_dependency "enumerize"
   s.add_dependency "sequenced"
   s.add_dependency "activerecord-diff"
